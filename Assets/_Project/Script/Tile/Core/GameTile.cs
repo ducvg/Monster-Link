@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class GameTile : MonoBehaviour
 {
+    [field: Header("Game tile Behavior")]
+    [field: SerializeField] public bool IsBlockable { get; private set; } = true;
+    [field: SerializeField] public bool IsMovable { get; private set; } = true;
+
     protected virtual void Awake()
     {
         var position = transform.position;

@@ -13,6 +13,6 @@ public class PoolManager : MonoBehaviour
             factory.PoolParent.SetParent(transform);
         }
 
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(this);
     }
 }

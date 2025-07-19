@@ -9,10 +9,6 @@ public class GameTileFactorySO : ScriptableObject
     public MatchTileFactory monsterTileFactory;
     public MatchTileFactory itemTileFactory;
 
-    [Header("ObstacleTile Factories")]
-    public ObstacleTileFactory waterTileFactory;
-    public ObstacleTileFactory rockTileFactory;
-
     public MatchTile CreateMonsterTile(MatchTile matchTilePrefab, Vector3 position)
     {
         return monsterTileFactory.CreateMatchTile(matchTilePrefab, position);
@@ -22,15 +18,4 @@ public class GameTileFactorySO : ScriptableObject
     {
         return itemTileFactory.CreateMatchTile(matchTilePrefab, position);
     }
-
-    public ObstacleTile CreateWaterTile(ObstacleTile obstacleTilePrefab, Vector3 position)
-    {
-        return waterTileFactory.CreateObstacleTile(obstacleTilePrefab, position);
-    }
-
-    public ObstacleTile CreateRockTile(ObstacleTile obstacleTilePrefab, Vector3 position)
-    {
-        return rockTileFactory.CreateObstacleTile(obstacleTilePrefab, position);
-    }
-
 }

@@ -11,7 +11,7 @@ public class MonsterTileFactorySO : MatchTileFactory
         this.matchTilePrefab = matchTilePrefab;
 
         var tile = pool.Get();
-        tile.ApplyData(matchTilePrefab);
+        tile.CopyFrom(matchTilePrefab);
         return tile;
     }
 

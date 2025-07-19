@@ -15,9 +15,9 @@ public class MatchTile : GameTile, IPointerClickHandler
     public SpriteRenderer Icon
     {
         get => icon;
-        set => icon = value;
+        private set => icon = value;
     }
-    public SpecialEffectData TileEffect
+    public SpecialEffectData TileEffect //exposed for random gen
     {
         get => tileEffect;
         set => tileEffect = value;
@@ -25,9 +25,10 @@ public class MatchTile : GameTile, IPointerClickHandler
     public Animator Animator
     {
         get => animator;
-        set => animator = value;
+        private set => animator = value;
     }
 
+    [Header("Match Tile Properties")]
     [SerializeField] private SpecialEffectData tileEffect;
 
     [SerializeField] private SpriteRenderer background, icon;
@@ -49,10 +50,15 @@ public class MatchTile : GameTile, IPointerClickHandler
 
     }
 
-    public void ApplyData(MatchTile prefab)
+    public void CopyFrom(MatchTile prefab)
     {
         icon.sprite = prefab.Icon.sprite;
         animator.runtimeAnimatorController = prefab.Animator.runtimeAnimatorController;
+
+        if(prefab.TileEffect != null)
+        {
+            SetEffect(prefab.TileEffect);
+        }
     }
 
     protected override void Start()
@@ -80,6 +86,6 @@ public class MatchTile : GameTile, IPointerClickHandler
 
     public virtual void OnPointerClick(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        
     }
 }
