@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eea9070c08577e4d81032cb5798ad5a, type: 3}
   m_Name: ObstacleTile List
   m_EditorClassIdentifier: 
-  waterTiles: []
+  waterTiles:
+  - {fileID: 8379732359098809558, guid: 9f437a0dfdbf44f4eab56f7cc1291972, type: 3}
   rockTiles: []

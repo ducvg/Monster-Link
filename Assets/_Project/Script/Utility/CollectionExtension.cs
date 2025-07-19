@@ -8,7 +8,7 @@ public static class CollectionExtension
 
     public static T GetRandomElement<T>(this List<T> source)
     {
-        int index = random.Next(source.Count);
+        int index = random.Next(source.Count-1);
         return source[index];
     }
 

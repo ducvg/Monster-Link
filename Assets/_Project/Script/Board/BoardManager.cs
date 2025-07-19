@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -15,7 +13,7 @@ public class BoardManager : Singleton<BoardManager>
 
     [SerializeField] private GameTileFactorySO gameTileFactory;
 
-    public Dictionary<Vector3, GameTile> board = new();
+    public GameTile[,] board;
 
     private int monsterTileIndex, itemTileIndex = 0;
 
@@ -24,10 +22,8 @@ public class BoardManager : Singleton<BoardManager>
 
     void Awake()
     {
-        if (boardSize.x % 2 != 0 && boardSize.y % 2 != 0)
-        {
-            boardSize.x -= 1; // Ensure pairs to match
-        }
+        Debug.Log("Initializing BoardManager...");
+        board = new GameTile[boardSize.x, boardSize.y];
     }
 
     void Start()
@@ -42,12 +38,13 @@ public class BoardManager : Singleton<BoardManager>
         int boardY = boardSize.y;
 
         List<Vector3Int> unfilledPositions = new();
+        Vector3Int tilePosition;
         for (int x = 0; x < boardX; x++)
         {
             for (int y = 0; y < boardY; y++)
             {
-                Vector3Int tilePosition = new Vector3Int(x, y);
-                if (!IsOccupied(tilePosition))
+                tilePosition = new Vector3Int(x, y);
+                if (!IsOccupied(x, y))
                 {
                     unfilledPositions.Add(tilePosition);
                 }
@@ -56,8 +53,11 @@ public class BoardManager : Singleton<BoardManager>
 
         int escape = 0;
         Vector3Int randomPos;
+        Vector3 position;
         var monsterList = matchTileList.monsterTiles;
-        while (unfilledPositions.Count > 0)
+        int monsterCount = monsterList.Count; //cached
+        int unfillCount = unfilledPositions.Count;
+        while (unfillCount > 0)
         {
             if (escape++ > 1000)
             {
@@ -65,22 +65,22 @@ public class BoardManager : Singleton<BoardManager>
                 return;
             }
 
-            if (unfilledPositions.Count >= 2) //place by pairs
+            if (unfillCount >= 2) //place by pairs
             {
                 // place first tile
                 randomPos = unfilledPositions.GetRandomElement();
-                var t = gameTileFactory.CreateMonsterTile(monsterList[monsterTileIndex]);
-                t.transform.position = boardTilemap.GetCellCenterWorld(randomPos);
+                position = boardTilemap.GetCellCenterWorld(randomPos);
+                gameTileFactory.CreateMonsterTile(monsterList[monsterTileIndex], position);
                 unfilledPositions.Remove(randomPos);
 
                 // place second tile
                 randomPos = unfilledPositions.GetRandomElement();
-                t = gameTileFactory.CreateMonsterTile(monsterList[monsterTileIndex]);
-                t.transform.position = boardTilemap.GetCellCenterWorld(randomPos);
+                position = boardTilemap.GetCellCenterWorld(randomPos);
+                gameTileFactory.CreateMonsterTile(monsterList[monsterTileIndex], position);
                 unfilledPositions.Remove(randomPos);
 
                 monsterTileIndex++;
-                if (monsterTileIndex >= monsterList.Count)
+                if (monsterTileIndex >= monsterCount)
                 {
                     monsterTileIndex = 0;
                     monsterList.Shuffle();
@@ -96,35 +96,32 @@ public class BoardManager : Singleton<BoardManager>
 
         for (int x = -1; x < boardX; x++)
         {
-            Vector3Int top = new Vector3Int(x, boardY - 1);
-            if (!IsOccupied(top))
+            if (!IsOccupied(x, boardY - 1))
             {
-                board[top] = null;
+                board[x, boardY - 1] = null;
             }
-            Vector3Int bottom = new Vector3Int(x, -1);
-            if (!IsOccupied(bottom))
+
+            if (!IsOccupied(x, -1))
             {
-                board[bottom] = null;
+                board[x, -1] = null;
             }
         }
         for (int y = -1; y < boardY; y++)
         {
-            Vector3Int right = new Vector3Int(-1, y);
-            if (!IsOccupied(right))
+            if (!IsOccupied(-1, y))
             {
-                board[right] = null;
+                board[-1, y] = null;
             }
-            Vector3Int left = new Vector3Int(boardX - 1, y);
-            if (!IsOccupied(left))
+            if (!IsOccupied(boardX - 1, y))
             {
-                board[left] = null;
+                board[boardX - 1, y] = null;
             }
         }
     }
 
-    public bool IsOccupied(Vector3Int position)
+    public bool IsOccupied(int x, int y)
     {
-        return board.ContainsKey(position) && board[position] != null;
+        return board[x,y] != null;
     }
 
     public void PlaceGameTile(Vector3Int position, int tileIndex)

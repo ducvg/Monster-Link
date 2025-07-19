@@ -3,13 +3,19 @@ using UnityEngine.Pool;
 
 public abstract class MatchTileFactory : ScriptableObject
 {
+    public Transform PoolParent
+    {
+        get => poolParent;
+        set => poolParent = value;
+    }
     protected Transform poolParent;
     protected IObjectPool<MatchTile> pool;
     protected MatchTile matchTilePrefab;
+    protected Vector3 spawnPosition;
 
     protected virtual void OnEnable()
     {
-        
+
         if (pool == null)
         {
             pool = new ObjectPool<MatchTile>(
@@ -21,11 +27,11 @@ public abstract class MatchTileFactory : ScriptableObject
         }
     }
 
-    public abstract MatchTile CreateMatchTile(MatchTile matchTilePrefab);
+    public abstract MatchTile CreateMatchTile(MatchTile matchTilePrefab, Vector3 position);
 
     private MatchTile OnCreateTile()
     {
-        var tile = Instantiate(matchTilePrefab, poolParent);
+        var tile = Instantiate(matchTilePrefab, spawnPosition, Quaternion.identity, poolParent);
         tile.Pool = pool;
         tile.OnInit();
         return tile;
@@ -34,6 +40,7 @@ public abstract class MatchTileFactory : ScriptableObject
     private void OnGetTile(MatchTile tile)
     {
         tile.gameObject.SetActive(true);
+        tile.transform.position = spawnPosition;
         tile.OnInit();
     }
 

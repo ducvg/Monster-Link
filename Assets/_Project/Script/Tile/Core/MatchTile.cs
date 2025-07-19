@@ -49,7 +49,7 @@ public class MatchTile : GameTile, IPointerClickHandler
 
     }
 
-    public void ApplyVisual(MatchTile prefab)
+    public void ApplyData(MatchTile prefab)
     {
         icon.sprite = prefab.Icon.sprite;
         animator.runtimeAnimatorController = prefab.Animator.runtimeAnimatorController;

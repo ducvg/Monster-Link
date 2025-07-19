@@ -8,7 +8,7 @@ public class GameTile : MonoBehaviour
         //convert to tilemap position
         var tilePosition = BoardManager.Instance.boardTilemap.WorldToCell(position);
         // if designer hand placed the tile in the scene, register it to the board to save it
-        BoardManager.Instance.board[tilePosition] = this;
+        BoardManager.Instance.board[tilePosition.x, tilePosition.y] = this;
     }
 
     protected virtual void Start()

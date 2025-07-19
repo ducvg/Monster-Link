@@ -1,16 +1,12 @@
 using UnityEngine;
 
-public class WaterTile : MonoBehaviour
+public class WaterTile : ObstacleTile
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
-    // Update is called once per frame
-    void Update()
+    protected override void Awake()
     {
-        
+        base.Awake();
+        Destroy(spriteRenderer);
     }
 }

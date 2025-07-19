@@ -6,21 +6,13 @@ using UnityEngine.Pool;
 [CreateAssetMenu(fileName = "ItemTile Factory", menuName = "Scriptable Objects/Factory/MatchTile/ItemTile")]
 public class ItemTileFactorySO : MatchTileFactory
 {
-    protected override void OnEnable()
+    public override MatchTile CreateMatchTile(MatchTile matchTilePrefab, Vector3 position)
     {
-        base.OnEnable();
-        if(poolParent == null)
-        {
-            // Create a parent GameObject for the pool if it doesn't exist
-            poolParent = new GameObject("ItemTile Pool").transform;
-        }        
-    }
-
-    public override MatchTile CreateMatchTile(MatchTile matchTilePrefab)
-    {
+        this.spawnPosition = position;
         this.matchTilePrefab = matchTilePrefab;
+
         var tile = pool.Get();
-        tile.ApplyVisual(matchTilePrefab);
+        tile.ApplyData(matchTilePrefab);
         return tile;
     }
 }

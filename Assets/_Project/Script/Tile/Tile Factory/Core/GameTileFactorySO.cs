@@ -13,24 +13,24 @@ public class GameTileFactorySO : ScriptableObject
     public ObstacleTileFactory waterTileFactory;
     public ObstacleTileFactory rockTileFactory;
 
-    public MatchTile CreateMonsterTile(MatchTile matchTilePrefab)
+    public MatchTile CreateMonsterTile(MatchTile matchTilePrefab, Vector3 position)
     {
-        return monsterTileFactory.CreateMatchTile(matchTilePrefab);
+        return monsterTileFactory.CreateMatchTile(matchTilePrefab, position);
     }
 
-    public MatchTile CreateItemTile(MatchTile matchTilePrefab)
+    public MatchTile CreateItemTile(MatchTile matchTilePrefab, Vector3 position)
     {
-        return itemTileFactory.CreateMatchTile(matchTilePrefab);
+        return itemTileFactory.CreateMatchTile(matchTilePrefab, position);
     }
 
-    public ObstacleTile CreateWaterTile(ObstacleTile obstacleTilePrefab)
+    public ObstacleTile CreateWaterTile(ObstacleTile obstacleTilePrefab, Vector3 position)
     {
-        return waterTileFactory.CreateObstacleTile(obstacleTilePrefab);
+        return waterTileFactory.CreateObstacleTile(obstacleTilePrefab, position);
     }
 
-    public ObstacleTile CreateRockTile(ObstacleTile obstacleTilePrefab)
+    public ObstacleTile CreateRockTile(ObstacleTile obstacleTilePrefab, Vector3 position)
     {
-        return rockTileFactory.CreateObstacleTile(obstacleTilePrefab);
+        return rockTileFactory.CreateObstacleTile(obstacleTilePrefab, position);
     }
 
 }

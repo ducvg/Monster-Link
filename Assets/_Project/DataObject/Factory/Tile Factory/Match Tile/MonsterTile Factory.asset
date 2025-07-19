@@ -12,4 +12,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf423a979fb49f49923a226a2c77206, type: 3}
   m_Name: MonsterTile Factory
   m_EditorClassIdentifier: 
-  poolParent: {fileID: 333934066040201241, guid: b122f48a6bda681439ab87fb3e8b9d31, type: 3}
