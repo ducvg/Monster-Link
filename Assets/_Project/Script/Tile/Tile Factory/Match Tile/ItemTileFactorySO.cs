@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
 
-[CreateAssetMenu(fileName = "ItemTile Factory", menuName = "Scriptable Objects/Factory/MatchTile/ItemTile")]
+[CreateAssetMenu(fileName = "ItemTile Factory", menuName = "Scriptable Objects/Tile/Factory/MatchTile/ItemTile")]
 public class ItemTileFactorySO : MatchTileFactory
 {
     public override MatchTile CreateMatchTile(MatchTile matchTilePrefab, Vector3 position)

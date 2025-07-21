@@ -26,11 +26,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1053774001000345725, guid: 1e4432611e7cecf46aed0995f13fec1a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.93442
+      value: 7.3671
       objectReference: {fileID: 0}
     - target: {fileID: 1053774001000345725, guid: 1e4432611e7cecf46aed0995f13fec1a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.51107
+      value: 3.50089
       objectReference: {fileID: 0}
     - target: {fileID: 1053774001000345725, guid: 1e4432611e7cecf46aed0995f13fec1a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -64,10 +64,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3468035006235785531, guid: 1e4432611e7cecf46aed0995f13fec1a, type: 3}
+      propertyPath: <matchTileData>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 7a70422b90084e04d868c6fe3afb97e4, type: 2}
     - target: {fileID: 5013038821492858453, guid: 1e4432611e7cecf46aed0995f13fec1a, type: 3}
       propertyPath: m_Name
       value: Bee Tile
       objectReference: {fileID: 0}
+    - target: {fileID: 6908189938121092394, guid: 1e4432611e7cecf46aed0995f13fec1a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 3372bc8fd710cfc4f93e3cbc2e163113, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

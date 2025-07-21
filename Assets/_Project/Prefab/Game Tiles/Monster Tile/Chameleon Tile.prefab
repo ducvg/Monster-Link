@@ -72,6 +72,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.08
       objectReference: {fileID: 0}
+    - target: {fileID: 3468035006235785531, guid: 1e4432611e7cecf46aed0995f13fec1a, type: 3}
+      propertyPath: <matchTileData>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 175664d703ac1f84d933658bc88f5bde, type: 2}
     - target: {fileID: 5013038821492858453, guid: 1e4432611e7cecf46aed0995f13fec1a, type: 3}
       propertyPath: m_Name
       value: Chameleon Tile

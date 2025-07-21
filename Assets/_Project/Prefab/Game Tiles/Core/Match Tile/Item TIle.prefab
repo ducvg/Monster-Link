@@ -169,10 +169,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23cddea9905eac4f9b4eddea5fbb716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileEffect: {fileID: 0}
-  background: {fileID: 2028401031842760884}
-  icon: {fileID: 471800978751997282}
-  animator: {fileID: 1176653760294310588}
+  <IsBlockable>k__BackingField: 1
+  <IsMovable>k__BackingField: 1
+  <TileEffect>k__BackingField: {fileID: 0}
+  <Background>k__BackingField: {fileID: 2028401031842760884}
+  <Icon>k__BackingField: {fileID: 471800978751997282}
+  <Animator>k__BackingField: {fileID: 1176653760294310588}
 --- !u!1 &5822783554523910524
 GameObject:
   m_ObjectHideFlags: 0

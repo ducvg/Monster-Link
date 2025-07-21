@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Pool;
 
-[CreateAssetMenu(fileName = "MonsterTile Factory", menuName = "Scriptable Objects/Factory/MatchTile/MonsterTile")]
+[CreateAssetMenu(fileName = "MonsterTile Factory", menuName = "Scriptable Objects/Tile/Factory/MatchTile/MonsterTile")]
 public class MonsterTileFactorySO : MatchTileFactory
 {
 

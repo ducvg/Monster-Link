@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3468035006235785531, guid: 1e4432611e7cecf46aed0995f13fec1a, type: 3}
+      propertyPath: <matchTileData>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 6d961bcf6a9e86b4eb1e2ee26601287c, type: 2}
     - target: {fileID: 5013038821492858453, guid: 1e4432611e7cecf46aed0995f13fec1a, type: 3}
       propertyPath: m_Name
       value: Spike Turtle Tile
