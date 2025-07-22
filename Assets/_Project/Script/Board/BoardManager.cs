@@ -14,6 +14,7 @@ public class BoardManager : Singleton<BoardManager>
     [SerializeField] private MatchTileListSO matchTiles;
     [SerializeField] private List<SpecialEffectData> specialEffects;
 
+    [SerializeField] private LineFactorySO lineFactory;
     [SerializeField] private GameTileFactorySO gameTileFactory;
 
     public GameTile[,] board;
@@ -83,49 +84,61 @@ public class BoardManager : Singleton<BoardManager>
 
     public void SelectTile(MatchTile tile)
     {
+        if (selectedTile1 == null) // select 1st tile
         {
-            switch (selectedTile1)
-            {
-                case null:
-                    Debug.Log($"Selecting tile 1: {tile.name}");
-                    selectedTile1 = tile;
-
-                    break;
-
-                case MatchTile t1 when t1 == tile:
-                    Debug.Log($"Clicked the same tile again: {tile.name}, deselecting.");
-
-                    selectedTile1.HighLightOff();
-                    selectedTile1 = null;
-
-                    break;
-
-                case MatchTile t1 when t1.matchTileData == tile.matchTileData:
-                    Debug.Log($"Connecting with tile 2: {tile.name}");
-                    selectedTile2 = tile;
-
-                    //Connect the tiles
-                    var connectable = TileConnection.Connect(selectedTile1, selectedTile2);
-                    Debug.Log(connectable != null  ? "Tiles connected successfully!" : "Failed to connect tiles.");
-
-                    selectedTile1.HighLightOff();
-                    selectedTile2.HighLightOff();
-                    selectedTile1 = null;
-                    selectedTile2 = null;
-                    
-                    break;
-
-                default:
-                    Debug.Log($"Resetting selection, clicked on a different tile: {tile.name}");
-                    selectedTile1 = tile;
-                    selectedTile1.HighLightOn();
-
-
-                    break;
-            }
+            Debug.Log($"Selecting tile 1: {tile.name}");
+            selectedTile1 = tile;
         }
+        else if (selectedTile1 == tile) //  select same tile
+        {
+            Debug.Log($"Clicked the same tile again: {tile.name}, deselected.");
+            selectedTile1.HighLightOff();
+            selectedTile1 = null;
+        }
+        else if (selectedTile1.matchTileData == tile.matchTileData) // select 2nd tile of same 1st tile type
+        {
+            Debug.Log($"Connecting with tile 2: {tile.name}");
+            selectedTile2 = tile;
+
+            // Connect the tiles
+            List<(int x, int y)> path = TileConnection.Connect(selectedTile1, selectedTile2);
+            if (path != null)
+            {
+                Debug.Log($"Connectable !");
+                Line line = DrawLine(path);
+                line.OnDespawn();
+            }
+
+            selectedTile1.HighLightOff();
+            selectedTile2.HighLightOff();
+            selectedTile1 = null;
+            selectedTile2 = null;
+        }
+        else // select 2nd tile of different type (tile1 != null && tile1 != tile && tile1.matchTileData != tile.matchTileData)
+        {
+            Debug.Log($"Reset selection, clicked on a different tile: {tile.name}");
+
+            selectedTile1.HighLightOff();
+            selectedTile1 = tile;
+            selectedTile1.HighLightOn();
+        }
+        
     }
 
+    public Line DrawLine(List<(int x, int y)> path)
+    {
+        Vector3[] pathVector = new Vector3[path.Count];
+
+        for (int i = 0; i < path.Count; i++)
+        {
+            Vector3Int tilePosition = new Vector3Int(path[i].x, path[i].y, 0);
+            pathVector[i] = boardTilemap.GetCellCenterWorld(tilePosition);
+        }
+
+        Line line = lineFactory.CreateLine(pathVector);
+
+        return line;
+    }
 
     public GameTile GetTile(int x, int y)
     {

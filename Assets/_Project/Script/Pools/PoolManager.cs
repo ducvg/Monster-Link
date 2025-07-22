@@ -1,18 +1,22 @@
 using UnityEngine;
 
-public class PoolManager : MonoBehaviour
+public class PoolManager : PersistentSingleton<PoolManager>
 {
     [SerializeField] private MatchTileFactory[] matchTileFactories;
+    [SerializeField] private LineFactorySO lineFactory;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         foreach (var factory in matchTileFactories)
         {
             factory.PoolParent = new GameObject($"{factory.name} Pool").transform;
             factory.PoolParent.transform.position = Vector3.zero;
             factory.PoolParent.SetParent(transform);
         }
-
-        DontDestroyOnLoad(this);
+        lineFactory.PoolParent = new GameObject($"Line Pool").transform;
+        lineFactory.PoolParent.transform.position = Vector3.zero;
+        lineFactory.PoolParent.SetParent(transform);
     }
 }

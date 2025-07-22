@@ -11,11 +11,11 @@ public class GameTileFactorySO : ScriptableObject
 
     public MatchTile CreateMonsterTile(MatchTile matchTilePrefab, Vector3 position)
     {
-        return monsterTileFactory.CreateMatchTile(matchTilePrefab, position);
+        return monsterTileFactory.CreateTile(matchTilePrefab, position);
     }
 
     public MatchTile CreateItemTile(MatchTile matchTilePrefab, Vector3 position)
     {
-        return itemTileFactory.CreateMatchTile(matchTilePrefab, position);
+        return itemTileFactory.CreateTile(matchTilePrefab, position);
     }
 }
