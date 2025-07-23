@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 
 public class BoardManager : Singleton<BoardManager>
 {
-    [field: SerializeField] public Vector2Int BoardSize { get; set; } = new Vector2Int(16, 6);
+    [field: SerializeField] public Vector2Int BoardSize { get; private set; } = new Vector2Int(16, 6);
     [field: SerializeField] public Tilemap boardTilemap { get; private set; }
     [field: SerializeField] public GameObject highLightSelect  { get; set; }
 
@@ -31,9 +31,16 @@ public class BoardManager : Singleton<BoardManager>
 
     void Start()
     {
-        TileConnection.OnInit();
+        GameBoard.OnInit();
         FillBoard();
+        Shuffle();
+    }   
 
+    [ContextMenu("Shuffle board")]
+    void Shuffle()
+    {
+        Debug.Log("Shuffling tiles...");
+        GameBoard.Shuffle();   
     }
 
     private void FillBoard()
@@ -84,45 +91,62 @@ public class BoardManager : Singleton<BoardManager>
 
     public void SelectTile(MatchTile tile)
     {
+        tile.HighLightOn();
         if (selectedTile1 == null) // select 1st tile
         {
-            Debug.Log($"Selecting tile 1: {tile.name}");
+            Debug.Log($"Selecting tile 1");
             selectedTile1 = tile;
         }
         else if (selectedTile1 == tile) //  select same tile
         {
-            Debug.Log($"Clicked the same tile again: {tile.name}, deselected.");
+            Debug.Log($"Clicked the same tile, deselect.");
             selectedTile1.HighLightOff();
             selectedTile1 = null;
         }
         else if (selectedTile1.matchTileData == tile.matchTileData) // select 2nd tile of same 1st tile type
         {
-            Debug.Log($"Connecting with tile 2: {tile.name}");
+            Debug.Log($"Connecting with tile 2");
             selectedTile2 = tile;
 
             // Connect the tiles
-            List<(int x, int y)> path = TileConnection.Connect(selectedTile1, selectedTile2);
+            List<(int x, int y)> path = GameBoard.Connect(selectedTile1, selectedTile2);
             if (path != null)
             {
                 Debug.Log($"Connectable !");
                 Line line = DrawLine(path);
                 line.OnDespawn();
+
+                selectedTile1.OnConnect();
+                selectedTile2.OnConnect();
+
+            }
+            else
+            {
+                selectedTile1.HighLightOff();
+                selectedTile2.HighLightOff();
             }
 
-            selectedTile1.HighLightOff();
-            selectedTile2.HighLightOff();
+
             selectedTile1 = null;
             selectedTile2 = null;
         }
         else // select 2nd tile of different type (tile1 != null && tile1 != tile && tile1.matchTileData != tile.matchTileData)
         {
-            Debug.Log($"Reset selection, clicked on a different tile: {tile.name}");
+            Debug.Log($"Reset selection, clicked on a different tile");
 
             selectedTile1.HighLightOff();
             selectedTile1 = tile;
             selectedTile1.HighLightOn();
         }
         
+    }
+
+    public void EnsureSolvable()
+    {
+        while (GameBoard.FindAnyPath() == null)
+        {
+            
+        }
     }
 
     public Line DrawLine(List<(int x, int y)> path)
@@ -138,6 +162,24 @@ public class BoardManager : Singleton<BoardManager>
         Line line = lineFactory.CreateLine(pathVector);
 
         return line;
+    }
+
+    public void RemoveTile(GameTile tile)
+    {
+        if (tile == null) return;
+
+        Vector3Int tilePosition = boardTilemap.WorldToCell(tile.transform.position);
+        int x = tilePosition.x;
+        int y = tilePosition.y;
+
+        if (x < 0 || x >= BoardSize.x || y < 0 || y >= BoardSize.y)
+        {
+            Debug.LogError($"RemoveTile: Coordinates ({x}, {y}) are out of bounds.");
+            return;
+        }
+
+        board[x, y] = null;
+        Destroy(tile.gameObject);
     }
 
     public GameTile GetTile(int x, int y)
@@ -166,6 +208,25 @@ public class BoardManager : Singleton<BoardManager>
         Gizmos.DrawWireCube(center - new Vector3(0.01f, 0), size);
         Gizmos.DrawWireCube(center + new Vector3(0, 0.01f), size);
         Gizmos.DrawWireCube(center - new Vector3(0, 0.01f), size);
+
+        // int rowLength = BoardSize.x;
+        // int colLength = BoardSize.y;
+        
+        // if(Application.isPlaying)
+        // {
+        //     for (int i = 0; i < rowLength; i++)
+        //     {
+        //         for (int j = 0; j < colLength; j++)
+        //         {
+        //             if (board[i, j] != null)
+        //             {
+        //                 Gizmos.color = Color.red;
+        //                 Gizmos.DrawCube(new Vector3(i + 0.5f, j + 0.5f, 0), new Vector3(0.2f, 0.2f, 0));
+        //             }
+        //         }
+        //     }
+        // }
+        
     }
     #endregion
 

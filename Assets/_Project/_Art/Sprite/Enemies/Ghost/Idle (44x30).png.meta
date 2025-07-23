@@ -78,7 +78,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 35
+  spritePixelsToUnits: 30
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -143,10 +143,10 @@ TextureImporter:
       name: Idle (44x30)_0
       rect:
         serializedVersion: 2
-        x: 8
+        x: 0
         y: 0
-        width: 31
-        height: 28
+        width: 44
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,10 +165,10 @@ TextureImporter:
       name: Idle (44x30)_1
       rect:
         serializedVersion: 2
-        x: 52
+        x: 44
         y: 0
-        width: 31
-        height: 27
+        width: 44
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,10 +187,10 @@ TextureImporter:
       name: Idle (44x30)_2
       rect:
         serializedVersion: 2
-        x: 95
+        x: 88
         y: 0
-        width: 33
-        height: 25
+        width: 44
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -209,10 +209,10 @@ TextureImporter:
       name: Idle (44x30)_3
       rect:
         serializedVersion: 2
-        x: 139
+        x: 132
         y: 0
-        width: 33
-        height: 25
+        width: 44
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -231,10 +231,10 @@ TextureImporter:
       name: Idle (44x30)_4
       rect:
         serializedVersion: 2
-        x: 183
+        x: 176
         y: 0
-        width: 33
-        height: 25
+        width: 44
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -253,10 +253,10 @@ TextureImporter:
       name: Idle (44x30)_5
       rect:
         serializedVersion: 2
-        x: 228
+        x: 220
         y: 0
-        width: 31
-        height: 27
+        width: 44
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -275,10 +275,10 @@ TextureImporter:
       name: Idle (44x30)_6
       rect:
         serializedVersion: 2
-        x: 272
+        x: 264
         y: 0
-        width: 31
-        height: 29
+        width: 44
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -297,9 +297,9 @@ TextureImporter:
       name: Idle (44x30)_7
       rect:
         serializedVersion: 2
-        x: 317
+        x: 308
         y: 0
-        width: 29
+        width: 44
         height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -319,9 +319,9 @@ TextureImporter:
       name: Idle (44x30)_8
       rect:
         serializedVersion: 2
-        x: 361
+        x: 352
         y: 0
-        width: 29
+        width: 44
         height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -341,9 +341,9 @@ TextureImporter:
       name: Idle (44x30)_9
       rect:
         serializedVersion: 2
-        x: 405
+        x: 396
         y: 0
-        width: 29
+        width: 44
         height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -363,7 +363,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 62be3d780a7949c4c9c84d25c6baea7d
     internalID: 0
     vertices: []
     indices: 
@@ -371,7 +371,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":10.0,"y":1.0},"gridSpriteSize":{"x":44.0,"y":30.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Idle (44x30)_0: 4740742658319907719
       Idle (44x30)_1: -1280504103846584438

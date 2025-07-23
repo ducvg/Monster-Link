@@ -8,7 +8,7 @@ public abstract class MatchTileFactory : ScriptableObject
     protected MatchTile matchTilePrefab;
     protected Vector3 spawnPosition;
 
-    protected virtual void OnEnable()
+    public virtual void OnInit()
     {
 
         if (pool == null)

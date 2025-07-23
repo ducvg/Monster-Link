@@ -128,10 +128,10 @@ TextureImporter:
       name: Hit (84x38)_0
       rect:
         serializedVersion: 2
-        x: 43
+        x: 0
         y: 0
-        width: 39
-        height: 25
+        width: 84
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,10 +150,10 @@ TextureImporter:
       name: Hit (84x38)_1
       rect:
         serializedVersion: 2
-        x: 127
+        x: 84
         y: 0
-        width: 39
-        height: 25
+        width: 84
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,10 +172,10 @@ TextureImporter:
       name: Hit (84x38)_2
       rect:
         serializedVersion: 2
-        x: 212
+        x: 168
         y: 0
-        width: 37
-        height: 28
+        width: 84
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,10 +194,10 @@ TextureImporter:
       name: Hit (84x38)_3
       rect:
         serializedVersion: 2
-        x: 297
+        x: 252
         y: 0
-        width: 35
-        height: 31
+        width: 84
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,10 +216,10 @@ TextureImporter:
       name: Hit (84x38)_4
       rect:
         serializedVersion: 2
-        x: 381
+        x: 336
         y: 0
-        width: 35
-        height: 33
+        width: 84
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -238,7 +238,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e24b58250a4c9fb40a6f4a0ea32996ce
     internalID: 0
     vertices: []
     indices: 
@@ -246,7 +246,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":5.0,"y":1.0},"gridSpriteSize":{"x":84.0,"y":38.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Hit (84x38)_0: -1517127373124647554
       Hit (84x38)_1: 7606828424425268948

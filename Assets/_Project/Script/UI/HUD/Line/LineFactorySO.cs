@@ -13,7 +13,7 @@ public class LineFactorySO : ScriptableObject
     protected Vector3 spawnPosition;
     protected IObjectPool<Line> pool;
 
-    protected virtual void OnEnable()
+    public virtual void OnInit()
     {
 
         if (pool == null)

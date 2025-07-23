@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3288268939712628373}
   - component: {fileID: 1034253914597801141}
-  - component: {fileID: 6908189938121092394}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -88,28 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &6908189938121092394
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2792994575924267520}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e066c6b859ea1954795d4f9653ba564f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3598633658805996900
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,6 +186,7 @@ GameObject:
   - component: {fileID: 2400490326286488306}
   - component: {fileID: 3468035006235785531}
   - component: {fileID: -4598111553760306583}
+  - component: {fileID: -1004237964924838226}
   m_Layer: 0
   m_Name: Monster TIle
   m_TagString: Untagged
@@ -259,11 +237,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <IsBlockable>k__BackingField: 1
   <IsMovable>k__BackingField: 1
-  <MatchCount>k__BackingField: 3
+  <matchTileData>k__BackingField: {fileID: 0}
   <TileEffect>k__BackingField: {fileID: 0}
   <Background>k__BackingField: {fileID: 6000327555824782207}
   <Icon>k__BackingField: {fileID: 1034253914597801141}
-  <Animator>k__BackingField: {fileID: 6908189938121092394}
+  <Animator>k__BackingField: {fileID: -1004237964924838226}
 --- !u!61 &-4598111553760306583
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -310,3 +288,25 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &-1004237964924838226
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5013038821492858453}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

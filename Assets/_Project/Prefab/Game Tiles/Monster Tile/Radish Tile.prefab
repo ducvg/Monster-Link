@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1004237964924838226, guid: 1e4432611e7cecf46aed0995f13fec1a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: f3ba2bd6b8d068840a53ac0ad2748042, type: 2}
     - target: {fileID: 1034253914597801141, guid: 1e4432611e7cecf46aed0995f13fec1a, type: 3}
       propertyPath: m_Size.x
       value: 1.0285715

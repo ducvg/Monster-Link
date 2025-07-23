@@ -11,10 +11,13 @@ public class PoolManager : PersistentSingleton<PoolManager>
 
         foreach (var factory in matchTileFactories)
         {
+            factory.OnInit();
             factory.PoolParent = new GameObject($"{factory.name} Pool").transform;
             factory.PoolParent.transform.position = Vector3.zero;
             factory.PoolParent.SetParent(transform);
         }
+
+        lineFactory.OnInit();
         lineFactory.PoolParent = new GameObject($"Line Pool").transform;
         lineFactory.PoolParent.transform.position = Vector3.zero;
         lineFactory.PoolParent.SetParent(transform);
