@@ -9,23 +9,18 @@ public class MatchTile : GameTile, IPointerClickHandler
 
     [field: Header("Match Tile Properties")]
     [field: SerializeField] public MatchTileData matchTileData { get; set; }
-    [SerializeField] private SpecialEffectData tileEffect;
-    public SpecialEffectData TileEffect
+    [SerializeField] private TileEffectData tileEffect;
+    public TileEffectData TileEffect
     {
         get => tileEffect;
         set
         {
+            if(value == null) return;
+
             tileEffect = value;
-            if (tileEffect != null)
-            {
-                Background.color = value.tileColor;
-            } else
-            {
-                Background.color = Color.white;
-            }
+            tileEffect.OnInit(this);
         }
     }
-    [field: SerializeField] public SpriteRenderer Background { get; private set; }
     [field: SerializeField] public SpriteRenderer Icon { get; private set; }
     [field: SerializeField] public Animator Animator { get; private set; }
 
@@ -43,29 +38,33 @@ public class MatchTile : GameTile, IPointerClickHandler
     {
         base.OnInit();
 
-        //remove effect
         isInteractable = true;
-        TileEffect = null;
-        Background.color = Color.white;
+        tileEffect = null;
 
     }
 
     public void CopyFrom(MatchTile prefab)
     {
-        BoardPosition = prefab.BoardPosition;
+        // BoardPosition = prefab.BoardPosition;
         Icon.sprite = prefab.Icon.sprite;
         Animator.runtimeAnimatorController = prefab.Animator.runtimeAnimatorController;
-        TileEffect = prefab.TileEffect;
+        tileEffect = prefab.TileEffect;
     }
 
     public void ApplyEffects()
     {
-        TileEffect.ApplyEffect();
+        if (tileEffect != null)
+        {
+            tileEffect.ApplyEffect();
+
+        }
     }
 
     public override void OnDespawn()
     {
         base.OnDespawn();
+
+        if(tileEffect != null) tileEffect.OnDespawn(this);
 
         Pool?.Release(this);
     }
@@ -79,8 +78,8 @@ public class MatchTile : GameTile, IPointerClickHandler
 
     public virtual void HighLightOn()
     {
-        BoardManager.Instance.highLightSelect.SetActive(true);
-        BoardManager.Instance.highLightSelect.transform.position = transform.position;
+        BoardManager.Instance.HighLightSelect.SetActive(true);
+        BoardManager.Instance.HighLightSelect.transform.position = transform.position;
 
         ChangeAnim(AnimationHash.OnSelect);
 
@@ -88,7 +87,7 @@ public class MatchTile : GameTile, IPointerClickHandler
 
     public virtual void HighLightOff()
     {
-        BoardManager.Instance.highLightSelect.SetActive(false);
+        BoardManager.Instance.HighLightSelect.SetActive(false);
 
         ChangeAnim(AnimationHash.OnDeselect);
     }
@@ -96,7 +95,7 @@ public class MatchTile : GameTile, IPointerClickHandler
     public virtual void OnConnect()
     {
         isInteractable = false;
-        BoardManager.Instance.highLightSelect.SetActive(false);
+        BoardManager.Instance.HighLightSelect.SetActive(false);
         BoardManager.Instance.board[BoardPosition.x, BoardPosition.y] = null;
 
         ChangeAnim(AnimationHash.OnConnect);

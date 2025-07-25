@@ -10,6 +10,7 @@ public class MonsterTileFactorySO : MatchTileFactory
         this.matchTilePrefab = matchTilePrefab;
 
         var tile = pool.Get();
+        tile.OnInit();
         tile.CopyFrom(matchTilePrefab);
         
         return tile;

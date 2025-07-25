@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.UI;
 
 public class Line : MonoBehaviour
 {
@@ -20,8 +21,9 @@ public class Line : MonoBehaviour
         innerLine.SetPositions(path);
     }
 
-    public void OnDespawn()
+    public void OnDespawn(float delay = 1f)
     {
+        lifeTime = delay;
         StartCoroutine(Deactivate());
     }
 

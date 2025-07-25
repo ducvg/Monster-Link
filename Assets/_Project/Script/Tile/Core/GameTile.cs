@@ -11,11 +11,7 @@ public class GameTile : MonoBehaviour
 
     protected virtual void Awake()
     {
-        var position = transform.position;
-        //convert to tilemap position
-        BoardPosition = BoardManager.Instance.boardTilemap.WorldToCell(position);
-        // if designer hand placed the tile in the scene, register it to the board to save it
-        BoardManager.Instance.board[BoardPosition.x, BoardPosition.y] = this;
+        OnInit();
     }
 
     protected virtual void Start()
@@ -25,17 +21,15 @@ public class GameTile : MonoBehaviour
 
     public virtual void OnInit()
     {
-
+        var position = transform.position;
+        //convert to tilemap position
+        BoardPosition = BoardManager.Instance.BoardTilemap.WorldToCell(position);
+        // if designer hand placed the tile in the scene, register it to the board to save it
+        BoardManager.Instance.board[BoardPosition.x, BoardPosition.y] = this;
     }
 
     public virtual void OnDespawn()
     {
         
     }
-}
-
-public struct boardPosition
-{
-    int x;
-    int y;
 }

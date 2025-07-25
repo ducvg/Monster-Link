@@ -21,14 +21,13 @@ public abstract class MatchTileFactory : ScriptableObject
                 true, defaultCapacity: 90, maxSize: 300);
         }
     }
-
+ 
     public abstract MatchTile CreateTile(MatchTile matchTilePrefab, Vector3 position);
 
     private MatchTile OnCreateTile()
     {
         var tile = Instantiate(matchTilePrefab, spawnPosition, Quaternion.identity, PoolParent);
         tile.Pool = pool;
-        tile.OnInit();
         return tile;
     }
 
@@ -36,7 +35,6 @@ public abstract class MatchTileFactory : ScriptableObject
     {
         tile.gameObject.SetActive(true);
         tile.transform.position = spawnPosition;
-        tile.OnInit();
     }
 
     private void OnReleaseTile(MatchTile tile)

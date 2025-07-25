@@ -10,6 +10,7 @@ public class ObstacleTile : GameTile
 
     public override void OnInit()
     {
+        base.OnInit();
         // Custom initialization logic for obstacle tiles
     }
 

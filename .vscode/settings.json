@@ -54,7 +54,23 @@
         "ProjectSettings/": true,
         "UserSettings/": true,
         "temp/": true,
-        "Temp/": true
+        "Temp/": true,
+        "**/Library": true,
+        "**/Temp": true,
+        "**/obj": true,
+        "**/Logs": true,
+        "**/Build": true  
+    },
+    "search.exclude": {
+        "**/*.meta": true,
+        "**/*.csproj": true,
+        "**/*.sln": true,
+        "**/Library": true,
+        "**/Temp": true,
+        "**/obj": true,
+        "**/Logs": true,
+        "**/Build": true,
+        "**/.vs": true
     },
     "files.associations": {
         "*.asset": "yaml",
@@ -66,5 +82,15 @@
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj"
     },
-    "dotnet.defaultSolution": "Monster-Link.sln"
+    "files.watcherExclude": {
+        "**/Library/**": true,
+        "**/Temp/**": true,
+        "**/obj/**": true,
+        "**/Logs/**": true,
+        "**/Build/**": true
+    },
+    "dotnet.defaultSolution": "Monster-Link.sln",
+    "dotrush.roslyn.projectOrSolutionFiles": [
+        "d:\\Unity\\Monster-Link\\Monster-Link.sln"
+    ]
 }

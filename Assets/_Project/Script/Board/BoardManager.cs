@@ -1,27 +1,33 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.Tilemaps;
 
 public class BoardManager : Singleton<BoardManager>
 {
     [field: SerializeField] public Vector2Int BoardSize { get; private set; } = new Vector2Int(16, 6);
-    [field: SerializeField] public Tilemap boardTilemap { get; private set; }
-    [field: SerializeField] public GameObject highLightSelect  { get; set; }
+    [field: SerializeField] public Tilemap BoardTilemap { get; private set; }
+    [field: SerializeField] public GameObject HighLightSelect  { get; set; }
 
 
     [SerializeField] private MatchTileListSO matchTiles;
-    [SerializeField] private List<SpecialEffectData> specialEffects;
+    [SerializeField] private List<TileEffectData> specialEffects;
 
     [SerializeField] private LineFactorySO lineFactory;
     [SerializeField] private GameTileFactorySO gameTileFactory;
 
     public GameTile[,] board;
-    public MatchTile selectedTile1, selectedTile2;
+    private MatchTile selectedTile1, selectedTile2;
 
+#region Debug
     [Header("Debug")]
+    [SerializeField, InspectorName("Show board border")] private bool isDebugBorder = true;
+    [SerializeField, InspectorName("Show board position")] private bool isDebugPosition = true;
     [SerializeField] private Color borderColor = Color.red;
+#endregion
 
     void Awake()
     {
@@ -33,36 +39,29 @@ public class BoardManager : Singleton<BoardManager>
     {
         GameBoard.OnInit();
         FillBoard();
-        Shuffle();
+        if(GameBoard.FindAnyPath() == null) Shuffle();
     }   
 
-    [ContextMenu("Shuffle board")]
-    void Shuffle()
+    public void AutoSolve()
     {
-        Debug.Log("Shuffling tiles...");
-        GameBoard.Shuffle();   
+        var path = GameBoard.FindAnyPath();
+        if (path != null)
+        {
+            var line = DrawLine(path);
+            line.OnDespawn(5f);
+        }
+    }
+
+    public void Shuffle()
+    {
+        GameBoard.Shuffle();
     }
 
     private void FillBoard()
     {
-        int boardX = BoardSize.x;
-        int boardY = BoardSize.y;
+        List<(int x, int y)> unfilledPositions = GameBoard.GetEmptyPositions();
 
-        List<Vector3Int> unfilledPositions = new();
-        Vector3Int tilePosition;
-        for (int x = 0; x < boardX; x++)
-        {
-            for (int y = 0; y < boardY; y++)
-            {
-                tilePosition = new Vector3Int(x, y);
-                if (!IsOccupied(x, y))
-                {
-                    unfilledPositions.Add(tilePosition);
-                }
-            }
-        }
-
-        Vector3Int randomPos;
+        (int x, int y) randomPos;
         Vector3 position;
         while (unfilledPositions.Count > 0)
         {
@@ -70,13 +69,13 @@ public class BoardManager : Singleton<BoardManager>
             {
                 // place first tile
                 randomPos = unfilledPositions.GetRandomElement();
-                position = boardTilemap.GetCellCenterWorld(randomPos);
+                position = BoardTilemap.GetCellCenterWorld(new Vector3Int(randomPos.x, randomPos.y));
                 gameTileFactory.CreateMonsterTile(matchTiles.GetCurrentMonsterTile(), position);
                 unfilledPositions.Remove(randomPos);
 
                 // place second tile
                 randomPos = unfilledPositions.GetRandomElement();
-                position = boardTilemap.GetCellCenterWorld(randomPos);
+                position = BoardTilemap.GetCellCenterWorld(new Vector3Int(randomPos.x, randomPos.y));
                 gameTileFactory.CreateMonsterTile(matchTiles.GetCurrentMonsterTile(), position);
                 unfilledPositions.Remove(randomPos);
 
@@ -116,8 +115,7 @@ public class BoardManager : Singleton<BoardManager>
                 Line line = DrawLine(path);
                 line.OnDespawn();
 
-                selectedTile1.OnConnect();
-                selectedTile2.OnConnect();
+                OnTilesConnected();
 
             }
             else
@@ -125,7 +123,6 @@ public class BoardManager : Singleton<BoardManager>
                 selectedTile1.HighLightOff();
                 selectedTile2.HighLightOff();
             }
-
 
             selectedTile1 = null;
             selectedTile2 = null;
@@ -141,12 +138,10 @@ public class BoardManager : Singleton<BoardManager>
         
     }
 
-    public void EnsureSolvable()
+    public void OnTilesConnected()
     {
-        while (GameBoard.FindAnyPath() == null)
-        {
-            
-        }
+        selectedTile1.OnConnect();
+        selectedTile2.OnConnect();
     }
 
     public Line DrawLine(List<(int x, int y)> path)
@@ -155,8 +150,8 @@ public class BoardManager : Singleton<BoardManager>
 
         for (int i = 0; i < path.Count; i++)
         {
-            Vector3Int tilePosition = new Vector3Int(path[i].x, path[i].y, 0);
-            pathVector[i] = boardTilemap.GetCellCenterWorld(tilePosition);
+            Vector3Int tilePosition = new(path[i].x, path[i].y, 0);
+            pathVector[i] = BoardTilemap.GetCellCenterWorld(tilePosition);
         }
 
         Line line = lineFactory.CreateLine(pathVector);
@@ -164,68 +159,61 @@ public class BoardManager : Singleton<BoardManager>
         return line;
     }
 
-    public void RemoveTile(GameTile tile)
+    public void ClearBoard()
     {
-        if (tile == null) return;
-
-        Vector3Int tilePosition = boardTilemap.WorldToCell(tile.transform.position);
-        int x = tilePosition.x;
-        int y = tilePosition.y;
-
-        if (x < 0 || x >= BoardSize.x || y < 0 || y >= BoardSize.y)
+        int rowLength = BoardSize.x;
+        int colLength = BoardSize.y;
+        for (int i = 0; i < rowLength; i++)
         {
-            Debug.LogError($"RemoveTile: Coordinates ({x}, {y}) are out of bounds.");
-            return;
+            for (int j = 0; j < colLength; j++)
+            {
+                var tile = board[i, j];
+                if(tile != null)
+                {
+                    tile.OnDespawn();
+                    board[i, j] = null;
+                }
+            }
         }
-
-        board[x, y] = null;
-        Destroy(tile.gameObject);
-    }
-
-    public GameTile GetTile(int x, int y)
-    {
-        if (x < 0 || x >= BoardSize.x || y < 0 || y >= BoardSize.y)
-        {
-            Debug.LogError($"GetTile: Coordinates ({x}, {y}) are out of bounds.");
-            return null;
-        }
-        return board[x, y];
-    }
-
-    public bool IsOccupied(int x, int y)
-    {
-        return board[x, y] != null;
     }
 
     #region Debugging
     private void OnDrawGizmos()
     {
-        Vector3 center = new Vector3(BoardSize.x / 2f, BoardSize.y / 2f, 0);
-        Vector3 size = new Vector3(BoardSize.x, BoardSize.y, 0f);
-        Gizmos.color = borderColor;
-        Gizmos.DrawWireCube(center, size);
-        Gizmos.DrawWireCube(center + new Vector3(0.01f, 0), size);
-        Gizmos.DrawWireCube(center - new Vector3(0.01f, 0), size);
-        Gizmos.DrawWireCube(center + new Vector3(0, 0.01f), size);
-        Gizmos.DrawWireCube(center - new Vector3(0, 0.01f), size);
+        if(isDebugBorder)
+        {
+            Vector3 center = new (BoardSize.x / 2f, BoardSize.y / 2f, 0);
+            Vector3 size = new (BoardSize.x, BoardSize.y, 0f);
+            Gizmos.color = borderColor;
+            Gizmos.DrawWireCube(center, size);
+            Gizmos.DrawWireCube(center + new Vector3(0.01f, 0), size);
+            Gizmos.DrawWireCube(center - new Vector3(0.01f, 0), size);
+            Gizmos.DrawWireCube(center + new Vector3(0, 0.01f), size);
+            Gizmos.DrawWireCube(center - new Vector3(0, 0.01f), size);
+        }
 
-        // int rowLength = BoardSize.x;
-        // int colLength = BoardSize.y;
+        if(isDebugPosition)
+        {
+            int rowLength = BoardSize.x;
+            int colLength = BoardSize.y;
+            
+            if(Application.isPlaying)
+            {
+                for (int i = 0; i < rowLength; i++)
+                {
+                    for (int j = 0; j < colLength; j++)
+                    {
+                        if (board[i, j] != null)
+                        {
+                            Gizmos.color = Color.red;
+                            Gizmos.DrawCube(new Vector3(i + 0.5f, j + 0.5f, 0), new Vector3(0.2f, 0.2f, 0));
+                        }
+                    }
+                }
+            }    
+        }
+
         
-        // if(Application.isPlaying)
-        // {
-        //     for (int i = 0; i < rowLength; i++)
-        //     {
-        //         for (int j = 0; j < colLength; j++)
-        //         {
-        //             if (board[i, j] != null)
-        //             {
-        //                 Gizmos.color = Color.red;
-        //                 Gizmos.DrawCube(new Vector3(i + 0.5f, j + 0.5f, 0), new Vector3(0.2f, 0.2f, 0));
-        //             }
-        //         }
-        //     }
-        // }
         
     }
     #endregion

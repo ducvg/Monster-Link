@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public static class GameBoard
 {
@@ -16,12 +17,37 @@ public static class GameBoard
         rowLength = BoardManager.Instance.BoardSize.x;
     }
 
+    public static void Shuffle(List<MatchTile> matchTiles = null)
+    {
+        if (matchTiles == null)
+        {
+            matchTiles = GetMatchTiles();
+        }      
+
+        int rolls = (int)Random.Range(matchTiles.Count * 0.5f, matchTiles.Count);
+        while (rolls-- > 0)
+        {
+            var tile1 = matchTiles.GetRandomElement();
+            var tile2 = matchTiles.GetRandomElement();
+
+            (board[tile1.BoardPosition.x, tile1.BoardPosition.y], board[tile2.BoardPosition.x, tile2.BoardPosition.y]) = (tile2, tile1);
+            (tile2.transform.position, tile1.transform.position) = (tile1.transform.position, tile2.transform.position);
+            (tile2.BoardPosition, tile1.BoardPosition) = (tile1.BoardPosition, tile2.BoardPosition);
+        }
+
+        if (FindAnyPath() == null)
+        {
+            Debug.Log("No path found, shuffling again");
+            Shuffle(matchTiles);
+        }
+    }
+
     public static List<(int x, int y)> TurnBFS((int x, int y) startPos, (int x, int y) target)
     {
         // BFS queue: queue positions to visit with its reached dir and turns taken to reach it.
         Queue<((int x, int y) pos, (int dx, int dy) reachDir, int turnsTaken)> frontier = new();
         // Dictionary to track visited positions of a direction. Return turns taken to reach it.
-        Dictionary<((int x, int y) pos, (int dx, int dy) reachDir), int> visited = new();
+        Dictionary<((int x, int y) pos, (int dx, int dy) turnsTaken), int> visited = new();
         // Backtrack dictionary storing position with direction to reach it. Returns previous position and direction to reach that previous position.
         Dictionary<((int x, int y) pos, (int dx, int dy) reachDir), ((int x, int y) prevPos, (int dx, int dy) prevReachDir)> cameFrom = new();
 
@@ -50,19 +76,17 @@ public static class GameBoard
 
             foreach (var nextDir in Direction.NoDiagonal)
             {
+                if(nextDir == (-currentDir.dx, -currentDir.dy)) continue;
+                
                 var nextPos = (currentPos.x + nextDir.x, currentPos.y + nextDir.y);
 
-                if (IsBlocked(nextPos) && nextPos != target)
-                    continue;
+                if (IsBlocked(nextPos) && nextPos != target) continue;
 
                 int nextTurns = (currentDir != nextDir) ? currentTurns + 1 : currentTurns;
-
-                if (nextTurns > 2)
-                    continue;
+                if (nextTurns > 2) continue;
 
                 var next = (nextPos, nextDir);
-                if (visited.ContainsKey(next) && visited[next] <= nextTurns)
-                    continue;
+                if (visited.ContainsKey(next) && visited[next] <= nextTurns) continue;
 
                 frontier.Enqueue((nextPos, nextDir, nextTurns));
                 visited[next] = nextTurns;
@@ -96,7 +120,32 @@ public static class GameBoard
         return tile != null && tile.IsBlockable;
     }
 
-    public static List<(int x, int)> FindAnyPath()
+    public static List<(int x, int y)> FindAnyPath()
+    {
+        Dictionary<MatchTileData, List<MatchTile>> tileGroups = FilterTileGroups();
+
+        foreach (var group in tileGroups.Keys)
+        {
+            int count = tileGroups[group].Count;
+            for (int i = 0; i < count; i++)
+            {
+                for (int j = i + 1; j < count; j++)
+                {
+                    var startTile = tileGroups[group][i];
+                    var targetTile = tileGroups[group][j];
+                    
+                    var path = Connect(startTile, targetTile);
+                    if (path != null)
+                    {
+                        return path;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    private static Dictionary<MatchTileData, List<MatchTile>> FilterTileGroups()
     {
         Dictionary<MatchTileData, List<MatchTile>> tileGroups = new();
 
@@ -116,53 +165,23 @@ public static class GameBoard
             }
         }
 
-        foreach (var group in tileGroups.Keys)
-        {
-            for (int i = 0; i < tileGroups[group].Count; i++)
-            {
-                for (int j = i + 1; j < tileGroups[group].Count; j++)
-                {
-                    var startTile = tileGroups[group][i];
-                    var targetTile = tileGroups[group][j];
+        return tileGroups;
+    }
 
-                    var path = Connect(startTile, targetTile);
-                    if (path != null)
-                    {
-                        return path;
-                    }
+    public static List<(int x, int y)> GetEmptyPositions()
+    {
+        List<(int x, int y)> unfilledPositions = new();
+        for (int x = 0; x < rowLength; x++)
+        {
+            for (int y = 0; y < colLength; y++)
+            {
+                if (board[x, y] == null)
+                {
+                    unfilledPositions.Add((x, y));
                 }
             }
         }
-        return null;
-    }
-
-    public static void Shuffle()
-    {
-        List<MatchTile> matchTiles = GetMatchTiles();
-
-        while (matchTiles.Count >= 2)
-        {
-            var tile1 = matchTiles.GetRandomElement();
-            matchTiles.Remove(tile1);
-            var tile2 = matchTiles.GetRandomElement();
-            matchTiles.Remove(tile2);
-
-            (board[tile1.BoardPosition.x, tile1.BoardPosition.y], board[tile2.BoardPosition.x, tile2.BoardPosition.y]) = (tile2, tile1);
-
-            var tmp = tile1.transform.position;
-            tile1.transform.position = tile2.transform.position;
-            tile2.transform.position = tmp;
-
-            var tmpBoardPos = tile1.BoardPosition;
-            tile1.BoardPosition = tile2.BoardPosition;
-            tile2.BoardPosition = tmpBoardPos;
-        }
-
-        if (FindAnyPath() == null)
-        {
-            Debug.LogWarning("No path found after shuffling.");
-            Shuffle();
-        }
+        return unfilledPositions;
     }
 
     public static List<MatchTile> GetMatchTiles()
@@ -183,12 +202,7 @@ public static class GameBoard
 
         return matchTiles;
     }
-
-    public static bool IsMatchTile(this GameTile tile)
-    {
-        return tile != null && tile is MatchTile;
-    }
-
+    
 }
 
 

@@ -2,8 +2,9 @@ using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Heal", menuName = "Scriptable Objects/Special Effect/Heal")]
-public class HealTile : SpecialEffectData
+public class HealTile : TileEffectData
 {
+    [Header("Heal Tile Properties")]
     public int healAmount;
 
     public override void ApplyEffect()
