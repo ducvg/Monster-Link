@@ -1,26 +1,25 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Utility.SkibidiTween;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class BaseCanvas : MonoBehaviour
 {
-    [SerializeField] protected Skibidi<Vector3> moveSettings;
+    [Header("Base Canvas Settings")]
     [SerializeField] protected Skibidi<float> fadeSettings;
+    [SerializeField] protected CanvasGroup canvasGroup;
 
-    [SerializeField] private CanvasGroup canvasGroup;
+    protected SkibidiElement[] elementSettings;
 
-    private RectTransform rectTransform;
     protected bool isTweening = false; //track if canvas is fully open or closed
 
-    protected virtual void Awake()
+    void Awake()
     {
-        rectTransform = transform as RectTransform;
+        elementSettings = GetComponentsInChildren<SkibidiElement>(includeInactive: true);
     }
 
     public virtual void Setup()
-    {
-        if (isTweening) return;
-        isTweening = true;
+    {        
         gameObject.SetActive(true);
 
         Open();
@@ -28,13 +27,23 @@ public class BaseCanvas : MonoBehaviour
 
     protected virtual void Open()
     {
-        StartCoroutine(rectTransform.SkibidiMove(moveSettings, OnOpenComplete));
-        StartCoroutine(canvasGroup.SkibidiFadeCanvas(fadeSettings, OnOpenComplete));
+        if(isTweening) return;
+        isTweening = true;
+        
+        canvasGroup.interactable = false;
+
+        for(int i = 0; i < elementSettings.Length; i++)
+        {
+            elementSettings[i].Show();
+        }
+
+        StartCoroutine(canvasGroup.SkibidiFade(fadeSettings, OnOpenComplete, isReverse: true));
     }
 
     protected virtual void OnOpenComplete()
     {
         isTweening = false;
+        canvasGroup.interactable = true;
     }
 
     public virtual void Close(float delay)
@@ -49,14 +58,20 @@ public class BaseCanvas : MonoBehaviour
     {
         if (isTweening) return;
         isTweening = true;
+        
+        canvasGroup.interactable = false;
 
-        StartCoroutine(rectTransform.SkibidiMove(moveSettings, OnCloseComplete, isReverse: true));
-        StartCoroutine(canvasGroup.SkibidiFadeCanvas(fadeSettings, OnCloseComplete, isReverse: true));
+        for(int i = 0; i < elementSettings.Length; i++)
+        {
+            elementSettings[i].Hide();
+        }
+        StartCoroutine(canvasGroup.SkibidiFade(fadeSettings, OnCloseComplete, isReverse: false));
     }
 
     protected virtual void OnCloseComplete()
     {
         isTweening = false;
+        canvasGroup.interactable = true;
         gameObject.SetActive(false);
     }
 
@@ -65,16 +80,28 @@ public class BaseCanvas : MonoBehaviour
     public void EditorSetAsShow()
     {
         var canvasGroup = GetComponent<CanvasGroup>();
-        canvasGroup.alpha = 1f;
-        rectTransform.anchoredPosition3D = moveSettings.start;
+        elementSettings = GetComponentsInChildren<SkibidiElement>(includeInactive: true);
+
+        canvasGroup.alpha = fadeSettings.start;
+
+        for(int i = 0; i < elementSettings.Length; i++)
+        {
+            elementSettings[i].SetAsShow();
+        }
     }
 
     [ContextMenu("Set as Hidden")]
     public void EditorSetAsHidden()
     {
         var canvasGroup = GetComponent<CanvasGroup>();
-        canvasGroup.alpha = 0f;
-        rectTransform.anchoredPosition3D = moveSettings.end;
+        elementSettings = GetComponentsInChildren<SkibidiElement>(includeInactive: true);
+
+        canvasGroup.alpha = fadeSettings.end;
+
+        for(int i = 0; i < elementSettings.Length; i++)
+        {
+            elementSettings[i].SetAsHide();
+        }
     }
 #endregion
 }

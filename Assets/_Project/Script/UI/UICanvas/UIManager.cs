@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManager : Singleton<UIManager>
+public class UIManager : PersistentSingleton<UIManager>
 {
     [SerializeField] private Transform canvasRoot;
     [SerializeField] private List<BaseCanvas> prefabList;
@@ -10,8 +10,10 @@ public class UIManager : Singleton<UIManager>
     private Dictionary<Type, BaseCanvas> activeCanvases = new(); 
     private Dictionary<Type, BaseCanvas> canvasPrefabs = new(); 
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         foreach (var canvas in prefabList)
         {
             canvasPrefabs.Add(canvas.GetType(), canvas);
@@ -26,6 +28,20 @@ public class UIManager : Singleton<UIManager>
         canvas.Setup();
 
         return canvas;
+    }
+
+    public BaseCanvas Open(BaseCanvas prefab)
+    {
+        Type canvasType = prefab.GetType();
+        
+        if (!activeCanvases.ContainsKey(canvasType))
+        {
+            BaseCanvas instance = Instantiate(prefab, canvasRoot);
+            activeCanvases[canvasType] = instance;
+            instance.Setup();
+        }
+        
+        return activeCanvases[canvasType];
     }
 
     public void Close<T>(float delay) where T : BaseCanvas
@@ -44,16 +60,6 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
-    public bool IsLoaded<T>() where T : BaseCanvas
-    {
-        return activeCanvases.ContainsKey(typeof(T)) && activeCanvases[typeof(T)] != null;
-    }
-
-    public bool IsOpened<T>() where T : BaseCanvas
-    {
-        return IsLoaded<T>() && activeCanvases[typeof(T)].gameObject.activeSelf;
-    }
-
     public T GetCanvas<T>() where T : BaseCanvas
     {
         if (!IsLoaded<T>())
@@ -62,6 +68,16 @@ public class UIManager : Singleton<UIManager>
             activeCanvases[typeof(T)] = canvas; 
         }
         return activeCanvases[typeof(T)] as T;
+    }
+    
+    public bool IsLoaded<T>() where T : BaseCanvas
+    {
+        return activeCanvases.ContainsKey(typeof(T)) && activeCanvases[typeof(T)] != null;
+    }
+
+    public bool IsOpened<T>() where T : BaseCanvas
+    {
+        return IsLoaded<T>() && activeCanvases[typeof(T)].gameObject.activeSelf;
     }
 
     private T GetCanvasPrefab<T>() where T : BaseCanvas

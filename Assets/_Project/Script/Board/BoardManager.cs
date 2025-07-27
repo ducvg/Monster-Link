@@ -5,19 +5,23 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.Tilemaps;
+using Utility.SkibidiTween;
 
 public class BoardManager : Singleton<BoardManager>
 {
-    [field: SerializeField] public Vector2Int BoardSize { get; private set; } = new Vector2Int(16, 6);
+    [field: SerializeField] public Vector2Int BoardSize { get; private set; } = new Vector2Int(15, 6);
     [field: SerializeField] public Tilemap BoardTilemap { get; private set; }
     [field: SerializeField] public GameObject HighLightSelect  { get; set; }
 
+    [SerializeField] private Skibidi<Vector2> boardMoveSetting;
 
+    [Header("Factory")]
+    [SerializeField] private LineDrawerSO lineDrawer;
+    [SerializeField] private GameTileFactorySO gameTileFactory;
+
+    [Header("Storage")]
     [SerializeField] private MatchTileListSO matchTiles;
     [SerializeField] private List<TileEffectData> specialEffects;
-
-    [SerializeField] private LineFactorySO lineFactory;
-    [SerializeField] private GameTileFactorySO gameTileFactory;
 
     public GameTile[,] board;
     private MatchTile selectedTile1, selectedTile2;
@@ -37,6 +41,7 @@ public class BoardManager : Singleton<BoardManager>
 
     void Start()
     {
+        ShowBoard();
         GameBoard.OnInit();
         FillBoard();
         if(GameBoard.FindAnyPath() == null) Shuffle();
@@ -47,8 +52,7 @@ public class BoardManager : Singleton<BoardManager>
         var path = GameBoard.FindAnyPath();
         if (path != null)
         {
-            var line = DrawLine(path);
-            line.OnDespawn(5f);
+            lineDrawer.DrawLine(path, 3f);
         }
     }
 
@@ -70,13 +74,13 @@ public class BoardManager : Singleton<BoardManager>
                 // place first tile
                 randomPos = unfilledPositions.GetRandomElement();
                 position = BoardTilemap.GetCellCenterWorld(new Vector3Int(randomPos.x, randomPos.y));
-                gameTileFactory.CreateMonsterTile(matchTiles.GetCurrentMonsterTile(), position);
+                gameTileFactory.CreateMonsterTile(matchTiles.GetCurrentMonsterTile(), position, BoardTilemap.transform);
                 unfilledPositions.Remove(randomPos);
 
                 // place second tile
                 randomPos = unfilledPositions.GetRandomElement();
                 position = BoardTilemap.GetCellCenterWorld(new Vector3Int(randomPos.x, randomPos.y));
-                gameTileFactory.CreateMonsterTile(matchTiles.GetCurrentMonsterTile(), position);
+                gameTileFactory.CreateMonsterTile(matchTiles.GetCurrentMonsterTile(), position, BoardTilemap.transform);
                 unfilledPositions.Remove(randomPos);
 
                 matchTiles.NextMonsterIndex();
@@ -112,11 +116,9 @@ public class BoardManager : Singleton<BoardManager>
             if (path != null)
             {
                 Debug.Log($"Connectable !");
-                Line line = DrawLine(path);
-                line.OnDespawn();
+                lineDrawer.DrawLine(path, 1f);
 
                 OnTilesConnected();
-
             }
             else
             {
@@ -144,20 +146,6 @@ public class BoardManager : Singleton<BoardManager>
         selectedTile2.OnConnect();
     }
 
-    public Line DrawLine(List<(int x, int y)> path)
-    {
-        Vector3[] pathVector = new Vector3[path.Count];
-
-        for (int i = 0; i < path.Count; i++)
-        {
-            Vector3Int tilePosition = new(path[i].x, path[i].y, 0);
-            pathVector[i] = BoardTilemap.GetCellCenterWorld(tilePosition);
-        }
-
-        Line line = lineFactory.CreateLine(pathVector);
-
-        return line;
-    }
 
     public void ClearBoard()
     {
@@ -175,6 +163,36 @@ public class BoardManager : Singleton<BoardManager>
                 }
             }
         }
+    }
+
+    private void HideBoard()
+    {
+        StartCoroutine(BoardTilemap.transform.parent.SkibidiMove
+        (
+            boardMoveSetting, 
+            onComplete: () => BoardTilemap.transform.parent.gameObject.SetActive(false), 
+            isReverse: false
+        ));
+    }
+
+    private void ShowBoard()
+    {
+        BoardTilemap.transform.parent.gameObject.SetActive(true);
+        StartCoroutine(BoardTilemap.transform.parent.SkibidiMove(boardMoveSetting, null, isReverse: true));
+    }
+
+    void OnEnable()
+    {
+        GameState.OnGamePause += HideBoard;
+        GameState.OnGameResume += ShowBoard;
+    }
+
+
+
+    void OnDisable()
+    {
+        GameState.OnGamePause -= HideBoard;
+        GameState.OnGameResume -= ShowBoard;
     }
 
     #region Debugging
@@ -215,6 +233,18 @@ public class BoardManager : Singleton<BoardManager>
 
         
         
+    }
+
+    [ContextMenu("Set board as show")]
+    private void SetBoardAsShow()
+    {
+        BoardTilemap.transform.parent.position = boardMoveSetting.start;
+    }
+
+    [ContextMenu("Set board as hide")]
+    private void SetBoardAsHide()
+    {
+        BoardTilemap.transform.parent.position = boardMoveSetting.end;
     }
     #endregion
 

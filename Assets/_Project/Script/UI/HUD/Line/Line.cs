@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class Line : MonoBehaviour
 {
-    [SerializeField] private float lifeTime = 1f;
     [SerializeField] private LineRenderer outerLine, innerLine;
 
     public IObjectPool<Line> Pool { set => pool = value; }
@@ -23,13 +22,12 @@ public class Line : MonoBehaviour
 
     public void OnDespawn(float delay = 1f)
     {
-        lifeTime = delay;
-        StartCoroutine(Deactivate());
+        StartCoroutine(Deactivate(delay));
     }
 
-    private IEnumerator Deactivate()
+    private IEnumerator Deactivate(float delay)
     {
-        yield return new WaitForSeconds(lifeTime);
+        yield return new WaitForSeconds(delay);
 
         pool.Release(this);
     }

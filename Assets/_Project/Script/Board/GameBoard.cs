@@ -28,7 +28,11 @@ public static class GameBoard
         while (rolls-- > 0)
         {
             var tile1 = matchTiles.GetRandomElement();
-            var tile2 = matchTiles.GetRandomElement();
+            MatchTile tile2;
+            do
+            {
+                tile2 = matchTiles.GetRandomElement();
+            } while (tile1 == tile2);
 
             (board[tile1.BoardPosition.x, tile1.BoardPosition.y], board[tile2.BoardPosition.x, tile2.BoardPosition.y]) = (tile2, tile1);
             (tile2.transform.position, tile1.transform.position) = (tile1.transform.position, tile2.transform.position);
@@ -69,7 +73,7 @@ public static class GameBoard
                     parent = cameFrom[parent];
                 }
                 path.Add(startPos);
-                path.Reverse();
+                // path.Reverse();
 
                 return path;
             }

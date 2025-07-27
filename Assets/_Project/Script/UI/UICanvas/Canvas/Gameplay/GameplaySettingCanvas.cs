@@ -1,16 +1,21 @@
 using UnityEngine;
+using Utility.SkibidiTween;
 
-public class GameplaySettingCanvas : MonoBehaviour
+public class GameplaySettingCanvas : BaseCanvas
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    public void OnResumeClick()
     {
-        
+        UIManager.Instance.Close<GameplaySettingCanvas>();
+
+        GameState.OnGameResume?.Invoke();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnQuitClick()
     {
+        UIManager.Instance.Close<GameplaySettingCanvas>();
         
+        GameState.OnGameResume?.Invoke();
+        GameState.OnGameLost?.Invoke();
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "WaterTile Factory", menuName = "Scriptable Objects/Factory/Obstacle/WaterTile")]
+[CreateAssetMenu(fileName = "WaterTile Factory", menuName = "Scriptable Objects/Tile/Factory/Obstacle Tile/Water Tile")]
 public class WaterTileFactorySO : ScriptableObject
 {
     

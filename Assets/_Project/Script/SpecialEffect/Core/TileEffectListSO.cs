@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "TileEffectListSO", menuName = "Scriptable Objects/TileEffectListSO")]
+[CreateAssetMenu(fileName = "TileEffect List", menuName = "Scriptable Objects/Storage/TileEffect List")]
 public class TileEffectListSO : ScriptableObject
 {
     

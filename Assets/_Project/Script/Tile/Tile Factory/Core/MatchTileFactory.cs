@@ -3,6 +3,7 @@ using UnityEngine.Pool;
 
 public abstract class MatchTileFactory : ScriptableObject
 {
+    [SerializeField] protected bool isUsePool = false;
     public Transform PoolParent {get; set;}
     protected IObjectPool<MatchTile> pool;
     protected MatchTile matchTilePrefab;
@@ -22,7 +23,7 @@ public abstract class MatchTileFactory : ScriptableObject
         }
     }
  
-    public abstract MatchTile CreateTile(MatchTile matchTilePrefab, Vector3 position);
+    public abstract MatchTile CreateTile(MatchTile matchTilePrefab, Vector3 position, Transform parent);
 
     private MatchTile OnCreateTile()
     {

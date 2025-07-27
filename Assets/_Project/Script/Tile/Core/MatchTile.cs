@@ -65,8 +65,9 @@ public class MatchTile : GameTile, IPointerClickHandler
         base.OnDespawn();
 
         if(tileEffect != null) tileEffect.OnDespawn(this);
-
-        Pool?.Release(this);
+    
+        if(Pool != null) Pool.Release(this);
+        else Destroy(gameObject);
     }
 
     public virtual void OnPointerClick(PointerEventData eventData)
