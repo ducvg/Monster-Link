@@ -650,13 +650,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <BoardSize>k__BackingField: {x: 6, y: 10}
-  <boardTilemap>k__BackingField: {fileID: 1271717123}
-  matchTiles: {fileID: 11400000, guid: c6f5dfbb0d5b57b458a538cb4d1cd170, type: 2}
-  specialEffects:
-  - {fileID: 11400000, guid: 3a1f6283d49f30a4badbe2d76b42174e, type: 2}
-  gameTileFactory: {fileID: 11400000, guid: 286e5384f22317a4f832b4e832067a29, type: 2}
-  selectedTile1: {fileID: 0}
-  selectedTile2: {fileID: 0}
+  <BoardTilemap>k__BackingField: {fileID: 0}
+  gravityDirection: 0
+  boardMoveSetting:
+    isUse: 1
+    start: {x: 0, y: 0}
+    end: {x: 0, y: 0}
+    duration: 0
+    easeCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  boardGenerator:
+    tileSpawnGroups: []
+    effectSpawnGroups: []
+  lineDrawer: {fileID: 0}
+  isDebugBorder: 1
+  isDebugPosition: 1
   borderColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &496574048
 GameObject:
@@ -1339,7 +1351,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 9.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2593,7 +2605,7 @@ Tilemap:
       - {fileID: 6468098575848035798, guid: 0c510c132e2a30943aef32ca507c6068, type: 3}
       - {fileID: -1773276618267168224, guid: 0c510c132e2a30943aef32ca507c6068, type: 3}
       - {fileID: -8751078762436533981, guid: 0c510c132e2a30943aef32ca507c6068, type: 3}
-      m_AnimationSpeed: 10
+      m_AnimationSpeed: 10.000001
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 1, y: -1, z: 0}

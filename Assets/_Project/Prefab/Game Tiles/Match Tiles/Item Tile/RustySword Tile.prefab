@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 926011836206029462, guid: 8061784bacca1674eb4f36ec09e14ea3, type: 3}
+      propertyPath: <MatchTileData>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: d3f3f8611e88f4e44b9ccd1bc4df7f2e, type: 2}
+    - target: {fileID: 926011836206029462, guid: 8061784bacca1674eb4f36ec09e14ea3, type: 3}
+      propertyPath: <matchTileData>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: d3f3f8611e88f4e44b9ccd1bc4df7f2e, type: 2}
     - target: {fileID: 2159831572458255281, guid: 8061784bacca1674eb4f36ec09e14ea3, type: 3}
       propertyPath: <matchTileData>k__BackingField
       value: 
@@ -18,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: ae4813a4e3ecbf346880e1a169975cde, type: 3}
     - target: {fileID: 5026778936213714423, guid: 8061784bacca1674eb4f36ec09e14ea3, type: 3}
       propertyPath: m_Name
-      value: RustySword Tile Variant
+      value: RustySword Tile
       objectReference: {fileID: 0}
     - target: {fileID: 5026778936213714423, guid: 8061784bacca1674eb4f36ec09e14ea3, type: 3}
       propertyPath: m_IsActive

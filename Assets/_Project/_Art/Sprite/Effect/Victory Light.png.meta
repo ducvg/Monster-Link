@@ -1,0 +1,2652 @@
+fileFormatVersion: 2
+guid: c43c3835018c2c14b839f48c84bbe631
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2505342243075197586
+    second: Victory Light_0
+  - first:
+      213: -6421913593799312258
+    second: Victory Light_1
+  - first:
+      213: -6586358121681366258
+    second: Victory Light_2
+  - first:
+      213: 6622476555039411923
+    second: Victory Light_3
+  - first:
+      213: 3665121303777832690
+    second: Victory Light_4
+  - first:
+      213: -2307684639262686707
+    second: Victory Light_5
+  - first:
+      213: 4802266665999075201
+    second: Victory Light_6
+  - first:
+      213: 8173506627511946677
+    second: Victory Light_7
+  - first:
+      213: 5005056779476456306
+    second: Victory Light_8
+  - first:
+      213: 656387877235688416
+    second: Victory Light_9
+  - first:
+      213: 5512954514794629987
+    second: Victory Light_10
+  - first:
+      213: 5209700149077524793
+    second: Victory Light_11
+  - first:
+      213: 8741917844093495668
+    second: Victory Light_12
+  - first:
+      213: 4630336525556384035
+    second: Victory Light_13
+  - first:
+      213: -6543416338068772324
+    second: Victory Light_14
+  - first:
+      213: -6668879814499324383
+    second: Victory Light_15
+  - first:
+      213: -8464118818072889609
+    second: Victory Light_16
+  - first:
+      213: 5709646377249852125
+    second: Victory Light_17
+  - first:
+      213: -8954753871648838909
+    second: Victory Light_18
+  - first:
+      213: -8393732217048038216
+    second: Victory Light_19
+  - first:
+      213: -4752250496132852717
+    second: Victory Light_20
+  - first:
+      213: -5804605364837988577
+    second: Victory Light_21
+  - first:
+      213: -1585224894760045653
+    second: Victory Light_22
+  - first:
+      213: -2109277354068277349
+    second: Victory Light_23
+  - first:
+      213: 1440883655108745752
+    second: Victory Light_24
+  - first:
+      213: -950028895875032979
+    second: Victory Light_25
+  - first:
+      213: -5398497606798640883
+    second: Victory Light_26
+  - first:
+      213: 3889313958398503528
+    second: Victory Light_27
+  - first:
+      213: 8660432691310929746
+    second: Victory Light_28
+  - first:
+      213: -2251487571497560440
+    second: Victory Light_29
+  - first:
+      213: -9144957637918214240
+    second: Victory Light_30
+  - first:
+      213: 8167769446923493212
+    second: Victory Light_31
+  - first:
+      213: 4699299386636269290
+    second: Victory Light_32
+  - first:
+      213: 9148099731494970993
+    second: Victory Light_33
+  - first:
+      213: -439824815461033207
+    second: Victory Light_34
+  - first:
+      213: -2851570891357371434
+    second: Victory Light_35
+  - first:
+      213: -5990740864719527777
+    second: Victory Light_36
+  - first:
+      213: 3016606665964470580
+    second: Victory Light_37
+  - first:
+      213: 5116464577123199921
+    second: Victory Light_38
+  - first:
+      213: 7005700268301225367
+    second: Victory Light_39
+  - first:
+      213: 8890668104909619091
+    second: Victory Light_40
+  - first:
+      213: -814861715812586986
+    second: Victory Light_41
+  - first:
+      213: 7563116875767144123
+    second: Victory Light_42
+  - first:
+      213: 8213025263539640927
+    second: Victory Light_43
+  - first:
+      213: 6124501279647454538
+    second: Victory Light_44
+  - first:
+      213: -5291168830387220365
+    second: Victory Light_45
+  - first:
+      213: 8976651609087522369
+    second: Victory Light_46
+  - first:
+      213: -7388347679030425410
+    second: Victory Light_47
+  - first:
+      213: 855047204502756194
+    second: Victory Light_48
+  - first:
+      213: 7722721375776343436
+    second: Victory Light_49
+  - first:
+      213: -2894191664208056945
+    second: Victory Light_50
+  - first:
+      213: -9109152460741800578
+    second: Victory Light_51
+  - first:
+      213: -1552101089151743805
+    second: Victory Light_52
+  - first:
+      213: -1039422309604491729
+    second: Victory Light_53
+  - first:
+      213: 974357759848716166
+    second: Victory Light_54
+  - first:
+      213: -3536929299279624785
+    second: Victory Light_55
+  - first:
+      213: 5941139878078045209
+    second: Victory Light_56
+  - first:
+      213: 3876416091201685822
+    second: Victory Light_57
+  - first:
+      213: 5792172651385154742
+    second: Victory Light_58
+  - first:
+      213: -2692704677143449565
+    second: Victory Light_59
+  - first:
+      213: 6482110565698863518
+    second: Victory Light_60
+  - first:
+      213: 8022501149363659824
+    second: Victory Light_61
+  - first:
+      213: 5692692917583766727
+    second: Victory Light_62
+  - first:
+      213: 8389214100585418373
+    second: Victory Light_63
+  - first:
+      213: -789262621208309281
+    second: Victory Light_64
+  - first:
+      213: 5600232402273906895
+    second: Victory Light_65
+  - first:
+      213: -5269613780657817650
+    second: Victory Light_66
+  - first:
+      213: 8997782897121615754
+    second: Victory Light_67
+  - first:
+      213: 7571809159728857401
+    second: Victory Light_68
+  - first:
+      213: -5552880670007771309
+    second: Victory Light_69
+  - first:
+      213: -4097577765131414588
+    second: Victory Light_70
+  - first:
+      213: -6806655711904381443
+    second: Victory Light_71
+  - first:
+      213: 332421201463229597
+    second: Victory Light_72
+  - first:
+      213: 9157250483609333247
+    second: Victory Light_73
+  - first:
+      213: -5128457287725500106
+    second: Victory Light_74
+  - first:
+      213: -5141423746803958468
+    second: Victory Light_75
+  - first:
+      213: -4574145885681854647
+    second: Victory Light_76
+  - first:
+      213: 4116986744066970931
+    second: Victory Light_77
+  - first:
+      213: -416765470119241038
+    second: Victory Light_78
+  - first:
+      213: -153192358497799693
+    second: Victory Light_79
+  - first:
+      213: -3736304526869865286
+    second: Victory Light_80
+  - first:
+      213: 8155117697636830074
+    second: Victory Light_81
+  - first:
+      213: -2124380272523765676
+    second: Victory Light_82
+  - first:
+      213: -4194477387226412833
+    second: Victory Light_83
+  - first:
+      213: 6310737253410603543
+    second: Victory Light_84
+  - first:
+      213: -7257207923136131655
+    second: Victory Light_85
+  - first:
+      213: -3326725735973907114
+    second: Victory Light_86
+  - first:
+      213: 7492352225101177012
+    second: Victory Light_87
+  - first:
+      213: 3924822151673147425
+    second: Victory Light_88
+  - first:
+      213: -5728891745369539057
+    second: Victory Light_89
+  - first:
+      213: 7815814448179566398
+    second: Victory Light_90
+  - first:
+      213: -4277847404844202372
+    second: Victory Light_91
+  - first:
+      213: -407513644188236773
+    second: Victory Light_92
+  - first:
+      213: -5703071924661791493
+    second: Victory Light_93
+  - first:
+      213: 1528316726195757966
+    second: Victory Light_94
+  - first:
+      213: -7757701651231408382
+    second: Victory Light_95
+  - first:
+      213: -4432516687786362219
+    second: Victory Light_96
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Victory Light_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 3000
+        height: 3000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29a07470f73c4c220800000000000000
+      internalID: 2505342243075197586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_1
+      rect:
+        serializedVersion: 2
+        x: 1730
+        y: 2966
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7cf6577c97c0e6a0800000000000000
+      internalID: -6421913593799312258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_2
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 2947
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e035ca13f2e8894a0800000000000000
+      internalID: -6586358121681366258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_3
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 2898
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3de0a74e653c7eb50800000000000000
+      internalID: 6622476555039411923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_4
+      rect:
+        serializedVersion: 2
+        x: 1702
+        y: 2903
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fee46a38602dd230800000000000000
+      internalID: 3665121303777832690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_5
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 2892
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d024f171c0579ffd0800000000000000
+      internalID: -2307684639262686707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_6
+      rect:
+        serializedVersion: 2
+        x: 1813
+        y: 2877
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1870397d61415a240800000000000000
+      internalID: 4802266665999075201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_7
+      rect:
+        serializedVersion: 2
+        x: 2199
+        y: 2881
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bd862ef8f02e6170800000000000000
+      internalID: 8173506627511946677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_8
+      rect:
+        serializedVersion: 2
+        x: 2322
+        y: 2868
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 273da5d7f98857540800000000000000
+      internalID: 5005056779476456306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_9
+      rect:
+        serializedVersion: 2
+        x: 2343
+        y: 2867
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e38181fb45fb1900800000000000000
+      internalID: 656387877235688416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_10
+      rect:
+        serializedVersion: 2
+        x: 2873
+        y: 2494
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36b483d1ce2f18c40800000000000000
+      internalID: 5512954514794629987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_11
+      rect:
+        serializedVersion: 2
+        x: 2797
+        y: 2485
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 931c014fea29c4840800000000000000
+      internalID: 5209700149077524793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_12
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 2376
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47967d866f7815970800000000000000
+      internalID: 8741917844093495668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_13
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 2363
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3210e449982424040800000000000000
+      internalID: 4630336525556384035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_14
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 2352
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1a6cef428d1135a0800000000000000
+      internalID: -6543416338068772324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_15
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 2179
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12eaef654216373a0800000000000000
+      internalID: -6668879814499324383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_16
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 2104
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f6f010a7c8698a80800000000000000
+      internalID: -8464118818072889609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_17
+      rect:
+        serializedVersion: 2
+        x: 2958
+        y: 2059
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddac21d012dbc3f40800000000000000
+      internalID: 5709646377249852125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_18
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 1999
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30b215d4cc25ab380800000000000000
+      internalID: -8954753871648838909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_19
+      rect:
+        serializedVersion: 2
+        x: 2988
+        y: 1980
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b4891f3509738b80800000000000000
+      internalID: -8393732217048038216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_20
+      rect:
+        serializedVersion: 2
+        x: 2828
+        y: 1972
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 314d35e2a5d9c0eb0800000000000000
+      internalID: -4752250496132852717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_21
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 1900
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f17418fbc26e17fa0800000000000000
+      internalID: -5804605364837988577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_22
+      rect:
+        serializedVersion: 2
+        x: 2845
+        y: 1893
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba3b8ba6b56200ae0800000000000000
+      internalID: -1585224894760045653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_23
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 1872
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b970cf10c675ab2e0800000000000000
+      internalID: -2109277354068277349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_24
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 1848
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81a5c69dc0c0ff310800000000000000
+      internalID: 1440883655108745752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_25
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 1808
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d68130fa0c1d0d2f0800000000000000
+      internalID: -950028895875032979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_26
+      rect:
+        serializedVersion: 2
+        x: 2995
+        y: 1788
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0978f1770fa415b0800000000000000
+      internalID: -5398497606798640883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_27
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 1762
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86aaf4e407e99f530800000000000000
+      internalID: 3889313958398503528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_28
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 1724
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 257a4c6d5a9003870800000000000000
+      internalID: 8660432691310929746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_29
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1727
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8865eac8bfb11c0e0800000000000000
+      internalID: -2251487571497560440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_30
+      rect:
+        serializedVersion: 2
+        x: 2841
+        y: 1699
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a7b3e9fa75961180800000000000000
+      internalID: -9144957637918214240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_31
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 1668
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5fd92b890fb95170800000000000000
+      internalID: 8167769446923493212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_32
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 1655
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae67aa9e4e3473140800000000000000
+      internalID: 4699299386636269290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_33
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 1517
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 176aa91bc3494fe70800000000000000
+      internalID: 9148099731494970993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_34
+      rect:
+        serializedVersion: 2
+        x: 2951
+        y: 1514
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90b1b0f19ad65e9f0800000000000000
+      internalID: -439824815461033207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_35
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 1506
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d3ccc0f16f2d68d0800000000000000
+      internalID: -2851570891357371434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_36
+      rect:
+        serializedVersion: 2
+        x: 2793
+        y: 1493
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f90e9f08cec9cdca0800000000000000
+      internalID: -5990740864719527777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_37
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 1365
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43143efa7c32dd920800000000000000
+      internalID: 3016606665964470580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_38
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 1360
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bb2c49bc65510740800000000000000
+      internalID: 5116464577123199921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_39
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 1327
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79d04f6b64f393160800000000000000
+      internalID: 7005700268301225367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_40
+      rect:
+        serializedVersion: 2
+        x: 2887
+        y: 1309
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39f7801698ff16b70800000000000000
+      internalID: 8890668104909619091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_41
+      rect:
+        serializedVersion: 2
+        x: 2957
+        y: 1297
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61aece7369701b4f0800000000000000
+      internalID: -814861715812586986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_42
+      rect:
+        serializedVersion: 2
+        x: 2833
+        y: 1271
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbedcd63ab695f860800000000000000
+      internalID: 7563116875767144123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_43
+      rect:
+        serializedVersion: 2
+        x: 2783
+        y: 1247
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5ad69476f68af170800000000000000
+      internalID: 8213025263539640927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_44
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 1230
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a45dfcff6799ef450800000000000000
+      internalID: 6124501279647454538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_45
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 1220
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 370962a8bfdf196b0800000000000000
+      internalID: -5291168830387220365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_46
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 1168
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 146b9100419739c70800000000000000
+      internalID: 8976651609087522369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_47
+      rect:
+        serializedVersion: 2
+        x: 2874
+        y: 1168
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb84f4a5ee0577990800000000000000
+      internalID: -7388347679030425410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_48
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 1157
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26bd39af6ecbddb00800000000000000
+      internalID: 855047204502756194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_49
+      rect:
+        serializedVersion: 2
+        x: 2808
+        y: 1140
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c85077eac2e9c2b60800000000000000
+      internalID: 7722721375776343436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_50
+      rect:
+        serializedVersion: 2
+        x: 2944
+        y: 1141
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8d6bf6f304c5d7d0800000000000000
+      internalID: -2894191664208056945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_51
+      rect:
+        serializedVersion: 2
+        x: 2761
+        y: 1101
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7d0c9c691ac59180800000000000000
+      internalID: -9109152460741800578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_52
+      rect:
+        serializedVersion: 2
+        x: 2848
+        y: 1101
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c80d956844d57ae0800000000000000
+      internalID: -1552101089151743805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_53
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 1090
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2e7860aaea3391f0800000000000000
+      internalID: -1039422309604491729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_54
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 1069
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6879def583d958d00800000000000000
+      internalID: 974357759848716166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_55
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1027
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa544c0ba8d4aeec0800000000000000
+      internalID: -3536929299279624785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_56
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 1017
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91cdfb9dd3b237250800000000000000
+      internalID: 5941139878078045209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_57
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 1019
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e394fa595ebcbc530800000000000000
+      internalID: 3876416091201685822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_58
+      rect:
+        serializedVersion: 2
+        x: 2791
+        y: 998
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bc6b83965ee16050800000000000000
+      internalID: 5792172651385154742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_59
+      rect:
+        serializedVersion: 2
+        x: 2922
+        y: 995
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 320f4d9dc5791aad0800000000000000
+      internalID: -2692704677143449565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_60
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 951
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e91894f373515f950800000000000000
+      internalID: 6482110565698863518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_61
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 954
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 034ebf15a46a55f60800000000000000
+      internalID: 8022501149363659824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_62
+      rect:
+        serializedVersion: 2
+        x: 2751
+        y: 896
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c466ff1c02800f40800000000000000
+      internalID: 5692692917583766727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_63
+      rect:
+        serializedVersion: 2
+        x: 2754
+        y: 904
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58e871ac6c97c6470800000000000000
+      internalID: 8389214100585418373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_64
+      rect:
+        serializedVersion: 2
+        x: 2751
+        y: 884
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd19264e3d9fb05f0800000000000000
+      internalID: -789262621208309281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_65
+      rect:
+        serializedVersion: 2
+        x: 2756
+        y: 891
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc03b25d2b508bd40800000000000000
+      internalID: 5600232402273906895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_66
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 862
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec73364af229ed6b0800000000000000
+      internalID: -5269613780657817650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_67
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 868
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8fd4056fdb8edc70800000000000000
+      internalID: 8997782897121615754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_68
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 865
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93100b84058741960800000000000000
+      internalID: 7571809159728857401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_69
+      rect:
+        serializedVersion: 2
+        x: 2756
+        y: 866
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35fbd08737430f2b0800000000000000
+      internalID: -5552880670007771309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_70
+      rect:
+        serializedVersion: 2
+        x: 2817
+        y: 858
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c39dc58bba7227c0800000000000000
+      internalID: -4097577765131414588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_71
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 806
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df54e8771b6e981a0800000000000000
+      internalID: -6806655711904381443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_72
+      rect:
+        serializedVersion: 2
+        x: 2838
+        y: 780
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9c360d425ffc9400800000000000000
+      internalID: 332421201463229597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_73
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 692
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffdeec23cc6151f70800000000000000
+      internalID: 9157250483609333247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_74
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 671
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 639bb5fb44f04d8b0800000000000000
+      internalID: -5128457287725500106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_75
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 662
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3dfdfbb75ef5a8b0800000000000000
+      internalID: -5141423746803958468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_76
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 619
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9475e154d8e5580c0800000000000000
+      internalID: -4574145885681854647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_77
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 621
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3359a1981a9722930800000000000000
+      internalID: 4116986744066970931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_78
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 560
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bad4e6530a573af0800000000000000
+      internalID: -416765470119241038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_79
+      rect:
+        serializedVersion: 2
+        x: 2145
+        y: 158
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f13f619c50cfddf0800000000000000
+      internalID: -153192358497799693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_80
+      rect:
+        serializedVersion: 2
+        x: 2156
+        y: 158
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abcdc3f14daf52cc0800000000000000
+      internalID: -3736304526869865286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_81
+      rect:
+        serializedVersion: 2
+        x: 2318
+        y: 154
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7b052d965ccc2170800000000000000
+      internalID: 8155117697636830074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_82
+      rect:
+        serializedVersion: 2
+        x: 2444
+        y: 154
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4589f58c56fa482e0800000000000000
+      internalID: -2124380272523765676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_83
+      rect:
+        serializedVersion: 2
+        x: 2151
+        y: 150
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd806f32a093ac5c0800000000000000
+      internalID: -4194477387226412833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_84
+      rect:
+        serializedVersion: 2
+        x: 1752
+        y: 135
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7120d54a81e349750800000000000000
+      internalID: 6310737253410603543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_85
+      rect:
+        serializedVersion: 2
+        x: 2176
+        y: 135
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bd025028d7394b90800000000000000
+      internalID: -7257207923136131655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_86
+      rect:
+        serializedVersion: 2
+        x: 2264
+        y: 131
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6551022a19815d1d0800000000000000
+      internalID: -3326725735973907114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_87
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 105
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b0634d07ae2af760800000000000000
+      internalID: 7492352225101177012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_88
+      rect:
+        serializedVersion: 2
+        x: 1601
+        y: 75
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 120ff0dc3f4c77630800000000000000
+      internalID: 3924822151673147425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_89
+      rect:
+        serializedVersion: 2
+        x: 2191
+        y: 83
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0eb4908f43ee70b0800000000000000
+      internalID: -5728891745369539057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_90
+      rect:
+        serializedVersion: 2
+        x: 2259
+        y: 79
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e37db16a4d9577c60800000000000000
+      internalID: 7815814448179566398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_91
+      rect:
+        serializedVersion: 2
+        x: 2437
+        y: 84
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c764fe6437802a4c0800000000000000
+      internalID: -4277847404844202372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_92
+      rect:
+        serializedVersion: 2
+        x: 2163
+        y: 56
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b14090def78385af0800000000000000
+      internalID: -407513644188236773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_93
+      rect:
+        serializedVersion: 2
+        x: 2414
+        y: 59
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf4d70afc4e9ad0b0800000000000000
+      internalID: -5703071924661791493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_94
+      rect:
+        serializedVersion: 2
+        x: 2003
+        y: 35
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e83af2117fba53510800000000000000
+      internalID: 1528316726195757966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_95
+      rect:
+        serializedVersion: 2
+        x: 1171
+        y: 26
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20ff3e4437b175490800000000000000
+      internalID: -7757701651231408382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Victory Light_96
+      rect:
+        serializedVersion: 2
+        x: 1849
+        y: 17
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59ab0839e898c72c0800000000000000
+      internalID: -4432516687786362219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Victory Light_0: 2505342243075197586
+      Victory Light_1: -6421913593799312258
+      Victory Light_10: 5512954514794629987
+      Victory Light_11: 5209700149077524793
+      Victory Light_12: 8741917844093495668
+      Victory Light_13: 4630336525556384035
+      Victory Light_14: -6543416338068772324
+      Victory Light_15: -6668879814499324383
+      Victory Light_16: -8464118818072889609
+      Victory Light_17: 5709646377249852125
+      Victory Light_18: -8954753871648838909
+      Victory Light_19: -8393732217048038216
+      Victory Light_2: -6586358121681366258
+      Victory Light_20: -4752250496132852717
+      Victory Light_21: -5804605364837988577
+      Victory Light_22: -1585224894760045653
+      Victory Light_23: -2109277354068277349
+      Victory Light_24: 1440883655108745752
+      Victory Light_25: -950028895875032979
+      Victory Light_26: -5398497606798640883
+      Victory Light_27: 3889313958398503528
+      Victory Light_28: 8660432691310929746
+      Victory Light_29: -2251487571497560440
+      Victory Light_3: 6622476555039411923
+      Victory Light_30: -9144957637918214240
+      Victory Light_31: 8167769446923493212
+      Victory Light_32: 4699299386636269290
+      Victory Light_33: 9148099731494970993
+      Victory Light_34: -439824815461033207
+      Victory Light_35: -2851570891357371434
+      Victory Light_36: -5990740864719527777
+      Victory Light_37: 3016606665964470580
+      Victory Light_38: 5116464577123199921
+      Victory Light_39: 7005700268301225367
+      Victory Light_4: 3665121303777832690
+      Victory Light_40: 8890668104909619091
+      Victory Light_41: -814861715812586986
+      Victory Light_42: 7563116875767144123
+      Victory Light_43: 8213025263539640927
+      Victory Light_44: 6124501279647454538
+      Victory Light_45: -5291168830387220365
+      Victory Light_46: 8976651609087522369
+      Victory Light_47: -7388347679030425410
+      Victory Light_48: 855047204502756194
+      Victory Light_49: 7722721375776343436
+      Victory Light_5: -2307684639262686707
+      Victory Light_50: -2894191664208056945
+      Victory Light_51: -9109152460741800578
+      Victory Light_52: -1552101089151743805
+      Victory Light_53: -1039422309604491729
+      Victory Light_54: 974357759848716166
+      Victory Light_55: -3536929299279624785
+      Victory Light_56: 5941139878078045209
+      Victory Light_57: 3876416091201685822
+      Victory Light_58: 5792172651385154742
+      Victory Light_59: -2692704677143449565
+      Victory Light_6: 4802266665999075201
+      Victory Light_60: 6482110565698863518
+      Victory Light_61: 8022501149363659824
+      Victory Light_62: 5692692917583766727
+      Victory Light_63: 8389214100585418373
+      Victory Light_64: -789262621208309281
+      Victory Light_65: 5600232402273906895
+      Victory Light_66: -5269613780657817650
+      Victory Light_67: 8997782897121615754
+      Victory Light_68: 7571809159728857401
+      Victory Light_69: -5552880670007771309
+      Victory Light_7: 8173506627511946677
+      Victory Light_70: -4097577765131414588
+      Victory Light_71: -6806655711904381443
+      Victory Light_72: 332421201463229597
+      Victory Light_73: 9157250483609333247
+      Victory Light_74: -5128457287725500106
+      Victory Light_75: -5141423746803958468
+      Victory Light_76: -4574145885681854647
+      Victory Light_77: 4116986744066970931
+      Victory Light_78: -416765470119241038
+      Victory Light_79: -153192358497799693
+      Victory Light_8: 5005056779476456306
+      Victory Light_80: -3736304526869865286
+      Victory Light_81: 8155117697636830074
+      Victory Light_82: -2124380272523765676
+      Victory Light_83: -4194477387226412833
+      Victory Light_84: 6310737253410603543
+      Victory Light_85: -7257207923136131655
+      Victory Light_86: -3326725735973907114
+      Victory Light_87: 7492352225101177012
+      Victory Light_88: 3924822151673147425
+      Victory Light_89: -5728891745369539057
+      Victory Light_9: 656387877235688416
+      Victory Light_90: 7815814448179566398
+      Victory Light_91: -4277847404844202372
+      Victory Light_92: -407513644188236773
+      Victory Light_93: -5703071924661791493
+      Victory Light_94: 1528316726195757966
+      Victory Light_95: -7757701651231408382
+      Victory Light_96: -4432516687786362219
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

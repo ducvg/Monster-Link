@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 926011836206029462, guid: 8061784bacca1674eb4f36ec09e14ea3, type: 3}
+      propertyPath: <MatchTileData>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 171256f8f0eaf834985205bb2bbe34e3, type: 2}
+    - target: {fileID: 926011836206029462, guid: 8061784bacca1674eb4f36ec09e14ea3, type: 3}
+      propertyPath: <matchTileData>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 171256f8f0eaf834985205bb2bbe34e3, type: 2}
     - target: {fileID: 2159831572458255281, guid: 8061784bacca1674eb4f36ec09e14ea3, type: 3}
       propertyPath: <matchTileData>k__BackingField
       value: 
@@ -18,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: d0f0b91bab6dfc4419f6983cf1eed770, type: 3}
     - target: {fileID: 5026778936213714423, guid: 8061784bacca1674eb4f36ec09e14ea3, type: 3}
       propertyPath: m_Name
-      value: RustyKnife Tile Variant
+      value: RustyKnife Tile
       objectReference: {fileID: 0}
     - target: {fileID: 8135215008983048441, guid: 8061784bacca1674eb4f36ec09e14ea3, type: 3}
       propertyPath: m_LocalPosition.x

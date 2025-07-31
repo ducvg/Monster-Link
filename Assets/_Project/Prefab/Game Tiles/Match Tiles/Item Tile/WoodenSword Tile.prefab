@@ -8,9 +8,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 926011836206029462, guid: 8061784bacca1674eb4f36ec09e14ea3, type: 3}
+      propertyPath: <MatchTileData>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: d89130508e992b24ea73a36949a91faf, type: 2}
     - target: {fileID: 5026778936213714423, guid: 8061784bacca1674eb4f36ec09e14ea3, type: 3}
       propertyPath: m_Name
-      value: WoodenSword Tile Variant
+      value: WoodenSword Tile
       objectReference: {fileID: 0}
     - target: {fileID: 8135215008983048441, guid: 8061784bacca1674eb4f36ec09e14ea3, type: 3}
       propertyPath: m_LocalPosition.x

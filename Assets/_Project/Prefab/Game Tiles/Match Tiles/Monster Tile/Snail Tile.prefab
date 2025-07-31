@@ -69,6 +69,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3468035006235785531, guid: 1e4432611e7cecf46aed0995f13fec1a, type: 3}
+      propertyPath: <MatchTileData>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: afc536bb5e01b6c46a7b50457405337c, type: 2}
+    - target: {fileID: 3468035006235785531, guid: 1e4432611e7cecf46aed0995f13fec1a, type: 3}
       propertyPath: <matchTileData>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: afc536bb5e01b6c46a7b50457405337c, type: 2}
