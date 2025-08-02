@@ -28,10 +28,10 @@ public class GameTile : MonoBehaviour
         BoardManager.Instance.board[BoardPosition.x, BoardPosition.y] = this;
     }
 
-    public virtual void MoveTo(Vector3 destination, float speed = 4f, Action onComplete = null)
+    public virtual void MoveTo(Vector3 destination, float speed = 4f, Action onComplete = null, Action onUpdate = null)
     {
         onComplete += OnMoveComplete;
-        StartCoroutine(transform.SkibidiMoveAtSpeed(destination, speed, onComplete));
+        StartCoroutine(transform.SkibidiMoveAtSpeed(destination, speed, onComplete, onUpdate));
     }
 
     protected virtual void OnMoveComplete()

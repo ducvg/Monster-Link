@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: AutoSolve
   m_EditorClassIdentifier: 
   emitParticlePrefab: {fileID: 317449811214187922, guid: f0b305c6da1413c48923cabd5dad7afc, type: 3}
-  playerPowerData: {fileID: 11400000, guid: 915e2175605766b4291849050fb7313a, type: 2}
+  playerDataProfile: {fileID: 11400000, guid: 9403985343d8f16498e28be3646ee7d7, type: 2}

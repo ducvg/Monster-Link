@@ -687,10 +687,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 53.8
-  m_fontSizeBase: 36
+  m_fontSize: 65
+  m_fontSizeBase: 65
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -1619,7 +1619,7 @@ MonoBehaviour:
       m_RotationOrder: 4
   scaleSettings:
     isUse: 1
-    start: {x: 1.5, y: 1.5, z: 1.5}
+    start: {x: 1.25, y: 1.25, z: 1.25}
     end: {x: 2, y: 2, z: 2}
     duration: 1.5
     easeCurve:
@@ -1650,27 +1650,27 @@ MonoBehaviour:
     isUse: 1
     start: {r: 1, g: 1, b: 1, a: 1}
     end: {r: 1, g: 1, b: 1, a: 0}
-    duration: 1
+    duration: 2
     easeCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
         value: 0
-        inSlope: 0
-        outSlope: 3.000003
+        inSlope: 1.0008272
+        outSlope: 1.0008272
         tangentMode: 0
         weightedMode: 3
         inWeight: 0
-        outWeight: 0.333333
+        outWeight: 1
       - serializedVersion: 3
         time: 1
         value: 1
-        inSlope: 0
-        outSlope: 0
+        inSlope: 1.0035843
+        outSlope: 1.0035843
         tangentMode: 0
         weightedMode: 3
-        inWeight: 0.33333302
+        inWeight: 1
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -1874,7 +1874,7 @@ MonoBehaviour:
           m_MethodName: set_sprite
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 21300000, guid: 8b572ed8117047647b2d3d47940bb1b9, type: 3}
+            m_ObjectArgument: {fileID: 21300000, guid: 7f85979030a88974992ae57906f3b04a, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -1890,7 +1890,7 @@ MonoBehaviour:
           m_MethodName: set_sprite
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 21300000, guid: 7f85979030a88974992ae57906f3b04a, type: 3}
+            m_ObjectArgument: {fileID: 21300000, guid: 8b572ed8117047647b2d3d47940bb1b9, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0

@@ -15,7 +15,7 @@ public class BoardGenerator
 
         (int x, int y) randomPos;
         Vector3 position;
-        Vector3Int tilePos = Vector3Int.zero;
+        Vector3Int cachedV3 = Vector3Int.zero;
         var emptyCount = unfilledPositions.Count;
         foreach (var spawnGroup in tileSpawnGroups)
         {
@@ -24,35 +24,28 @@ public class BoardGenerator
             var factory = spawnGroup.factory;
             int tileIndex = 0;
 
-            while (tilesToSpawnCount >= 2)
+            while (tilesToSpawnCount >= 2 && unfilledPositions.Count >= 2) //place by pairs
             {
-                if (unfilledPositions.Count >= 2) //place by pairs
-                {
-                    randomPos = unfilledPositions.GetRandomElement();
-                    tilePos.x = randomPos.x;
-                    tilePos.y = randomPos.y;
-                    position = tilemap.GetCellCenterWorld(tilePos);
-                    factory.CreateTile(spawnGroup.tiles[tileIndex], position, tilemap.transform);
-                    unfilledPositions.Remove(randomPos);
-                    tilesToSpawnCount--;
+                randomPos = unfilledPositions.GetRandomElement();
+                cachedV3.x = randomPos.x;
+                cachedV3.y = randomPos.y;
+                position = tilemap.GetCellCenterWorld(cachedV3);
+                factory.CreateTile(spawnGroup.tiles[tileIndex], position, tilemap.transform);
+                unfilledPositions.Remove(randomPos);
+                tilesToSpawnCount--;
 
-                    randomPos = unfilledPositions.GetRandomElement();
-                    tilePos.x = randomPos.x;
-                    tilePos.y = randomPos.y;
-                    position = tilemap.GetCellCenterWorld(tilePos);
-                    factory.CreateTile(spawnGroup.tiles[tileIndex], position, tilemap.transform);
-                    unfilledPositions.Remove(randomPos);
-                    tilesToSpawnCount--;
+                randomPos = unfilledPositions.GetRandomElement();
+                cachedV3.x = randomPos.x;
+                cachedV3.y = randomPos.y;
+                position = tilemap.GetCellCenterWorld(cachedV3);
+                factory.CreateTile(spawnGroup.tiles[tileIndex], position, tilemap.transform);
+                unfilledPositions.Remove(randomPos);
+                tilesToSpawnCount--;
 
-                    tileIndex++;
-                    if(tileIndex >= spawnGroup.tiles.Length)
-                    {
-                        tileIndex = 0;
-                    }
-                }
-                else
+                tileIndex++;
+                if(tileIndex >= spawnGroup.tiles.Length)
                 {
-                    return;
+                    tileIndex = 0;
                 }
             }
         }

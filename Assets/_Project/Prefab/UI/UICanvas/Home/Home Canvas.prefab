@@ -192,12 +192,65 @@ MonoBehaviour:
     duration: 1.5
     easeCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 3.5822635
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0
+        outWeight: 0.23852958
+      - serializedVersion: 3
+        time: 0.336583
+        value: 0.828268
+        inSlope: 1.7675189
+        outSlope: 1.7674915
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0.43742254
+        outWeight: 0.22151233
+      - serializedVersion: 3
+        time: 0.550666
+        value: 1.079651
+        inSlope: 0.30952567
+        outSlope: 0.30952752
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0.4695607
+        outWeight: 0.41548836
+      - serializedVersion: 3
+        time: 0.779498
+        value: 0.974607
+        inSlope: -0.23213644
+        outSlope: -0.23214284
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0.35856426
+        outWeight: 0.36235142
+      - serializedVersion: 3
+        time: 0.897999
+        value: 1.003668
+        inSlope: 0.27978534
+        outSlope: 0.27974313
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0.33310264
+        outWeight: 0.33069265
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: -0.20239142
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0.3296829
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
   canvasGroup: {fileID: 6541947213220080079}
-  IsHandlingRabbitEars: 0
 --- !u!223 &4566757749724960721
 Canvas:
   m_ObjectHideFlags: 0
@@ -284,6 +337,7 @@ GameObject:
   - component: {fileID: 6621145648922846909}
   - component: {fileID: 6028586676994541972}
   - component: {fileID: 1156922740723262760}
+  - component: {fileID: 4465201762879946724}
   m_Layer: 5
   m_Name: Menu Buttons
   m_TagString: Untagged
@@ -300,7 +354,7 @@ RectTransform:
   m_GameObject: {fileID: 7441027486296742993}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 145686254600665453}
@@ -309,9 +363,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -100, y: 150}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 150}
+  m_SizeDelta: {x: 0, y: 100}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &6028586676994541972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,7 +383,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 2
+  m_ChildAlignment: 4
   m_Spacing: 50
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -379,7 +433,29 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  alphaSettings:
+  rotationSettings:
+    isUse: 0
+    start: {x: 0, y: 0, z: 0}
+    end: {x: 0, y: 0, z: 0}
+    duration: 0
+    easeCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  scaleSettings:
+    isUse: 0
+    start: {x: 0, y: 0, z: 0}
+    end: {x: 0, y: 0, z: 0}
+    duration: 0
+    easeCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  colorSettings:
     isUse: 0
     start: {r: 0, g: 0, b: 0, a: 0}
     end: {r: 0, g: 0, b: 0, a: 0}
@@ -390,7 +466,51 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  fadeGraphic: {fileID: 0}
+  elementGraphic: {fileID: 0}
+  onShow:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1156922740723262760}
+        m_TargetAssemblyTypeName: SkibidiElement, Assembly-CSharp
+        m_MethodName: Move
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onHide:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1156922740723262760}
+        m_TargetAssemblyTypeName: SkibidiElement, Assembly-CSharp
+        m_MethodName: Move
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4465201762879946724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7441027486296742993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 0
 --- !u!1 &8676975026940753806
 GameObject:
   m_ObjectHideFlags: 0

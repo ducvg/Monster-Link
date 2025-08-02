@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Shuffle
   m_EditorClassIdentifier: 
   emitParticlePrefab: {fileID: 2181170323351100708, guid: 4d208bde67c11b1419c8136847f09cb6, type: 3}
-  playerPowerData: {fileID: 11400000, guid: 915e2175605766b4291849050fb7313a, type: 2}
+  playerDataProfile: {fileID: 11400000, guid: 9403985343d8f16498e28be3646ee7d7, type: 2}

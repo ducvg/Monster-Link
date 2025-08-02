@@ -1,33 +1,27 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerData", menuName = "Scriptable Objects/Player/Player Data")]
-public class PlayerDataSO : ScriptableObject
+[CreateAssetMenu(fileName = "PlayerDataProfile", menuName = "Scriptable Objects/Player/Player Data Profile")]
+public class PlayerDataProfileSO : ScriptableObject
 {
-#region Player Data fields
-    [SerializeField] private int maxLevel;
-    [SerializeField] private int playerGold;
+    [field: SerializeField] public PlayerData PlayerData { get; private set; }
+    [field: SerializeField] public PlayerPowerData PowerData { get; private set; }
 
-    [SerializeField] private PlayerPowerSO powerData;
-#endregion
-
-    public int MaxLevel => maxLevel;
-    public int PlayerGold => playerGold;
-    public PlayerPowerSO PowerData => powerData;
+    public void LoadPowerData()
+    {
+        PowerData = SaveSystem.gameData.powerData.CloneInstance();
+    }
 
     public void Save()
     {
-
+        SaveSystem.gameData.playerData = PlayerData.CloneInstance();
+        SaveSystem.gameData.powerData = PowerData.CloneInstance();
     }
 
     public void Load()
     {
-
-    }
-
-    private void OnApplicationQuit()
-    {
-        Save();
+        PlayerData = SaveSystem.gameData.playerData.CloneInstance();
+        PowerData = SaveSystem.gameData.powerData.CloneInstance();
     }
 }
 

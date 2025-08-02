@@ -7,6 +7,7 @@ public class LineFactorySO : ScriptableObject
 {
     [SerializeField] private Line linePrefab;
 
+    public IObjectPool<Line> Pool => pool;
     public Transform PoolParent {get => poolParent ;set => poolParent = value; }
     private Transform poolParent;
 
@@ -15,16 +16,12 @@ public class LineFactorySO : ScriptableObject
 
     public virtual void OnInit()
     {
-
-        if (pool == null)
-        {
-            pool = new ObjectPool<Line>(
-                OnCreate,
-                OnGet,
-                OnRelease,
-                OnDestroyLine,
-                true, defaultCapacity: 2, maxSize: 5);
-        }
+        pool = new ObjectPool<Line>(
+            OnCreate,
+            OnGet,
+            OnRelease,
+            OnDestroyLine,
+            true, defaultCapacity: 2, maxSize: 5);
     }
 
     public Line CreateLine(Vector3[] path)
@@ -56,8 +53,8 @@ public class LineFactorySO : ScriptableObject
         line.gameObject.SetActive(false);
     }
 
-    private void OnDestroyLine(Line tile)
+    private void OnDestroyLine(Line line)
     {
-        Destroy(tile.gameObject);
+        Destroy(line.gameObject);
     }
 }

@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using Utility.SkibidiTween;
 
@@ -11,7 +7,6 @@ public class BoardManager : Singleton<BoardManager>
 {
     [field: SerializeField] public Vector2Int BoardSize { get; private set; } = new Vector2Int(15, 6);
     [field: SerializeField] public Tilemap BoardTilemap { get; private set; }
-    [field: SerializeField] public int MatchTileCount { get; set; }
     public GravityDirection GravityDirection 
     {
         get => gravityDirection;
@@ -21,13 +16,13 @@ public class BoardManager : Singleton<BoardManager>
         }
     }
 
-
     [SerializeField] private GravityDirection gravityDirection = GravityDirection.None;
     [SerializeField] private Skibidi<Vector2> boardMoveSetting;
     [SerializeField] private BoardGenerator boardGenerator;
     [SerializeField] private LineDrawerSO lineDrawer;
 
     public GameTile[,] board;
+    public int MatchTileCount { get; set; }
 
 #region Debug
     [Header("Debug")]
@@ -47,6 +42,7 @@ public class BoardManager : Singleton<BoardManager>
 
         boardGenerator.FillBoard();
         boardGenerator.GenerateTileEffects();
+
         MatchTileCount = GameBoard.GetMatchTiles().Count;
 
         if(GameBoard.FindAnyPath() == null) Shuffle();

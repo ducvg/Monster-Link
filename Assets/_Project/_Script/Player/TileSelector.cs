@@ -69,10 +69,12 @@ public class TileSelector : Singleton<TileSelector>
         selectedTile1.OnConnect();
         selectedTile2.OnConnect();
 
-        BoardManager.Instance.MatchTileCount =- 2;
+        BoardManager.Instance.MatchTileCount -= 2;
         if(BoardManager.Instance.MatchTileCount <= 0)
         {
+            GameState.OnGamePause?.Invoke();
             GameState.OnGameWon?.Invoke();
+            UIManager.Instance.Open<GameplayWinCanvas>();
             return;
         }
 

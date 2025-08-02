@@ -11,19 +11,43 @@ public class PowerPanelUI : MonoBehaviour
     private void Awake()
     {
         rectTransform = transform as RectTransform;
+        gameObject.SetActive(false);
+    }
+
+    public void Toggle()
+    {
+        if(gameObject.activeSelf) Hide();
+        else Show();
     }
 
     public void Show()
     {
         if (isSkibiding) return;
+        gameObject.SetActive(true);
+        
         isSkibiding = true;
-        StartCoroutine(rectTransform.SkibidiMove(moveSettings, () => isSkibiding = false, true));
+        StartCoroutine(rectTransform.SkibidiMove(
+            moveSettings, 
+            () =>
+            {
+                isSkibiding = false;
+            }, 
+            true
+        ));
     }
 
     public void Hide()
     {
         if (isSkibiding) return;
         isSkibiding = true;
-        StartCoroutine(rectTransform.SkibidiMove(moveSettings, () => isSkibiding = false, false));
+        StartCoroutine(rectTransform.SkibidiMove(
+            moveSettings, 
+            () =>
+            {
+                isSkibiding = false;
+                gameObject.SetActive(false);
+            }, 
+            false
+        ));
     }
 }

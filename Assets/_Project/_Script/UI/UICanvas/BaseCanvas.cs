@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Utility.SkibidiTween;
@@ -11,10 +12,10 @@ public class BaseCanvas : MonoBehaviour
     // [SerializeField] private bool IsHandlingRabbitEars = false;
 
     protected SkibidiElement[] elementSettings;
-
     protected bool isTweening = false; //track if canvas is fully open or closed
 
-    void Awake()
+
+    protected virtual void Awake()
     {
         elementSettings = GetComponentsInChildren<SkibidiElement>(includeInactive: true);
         
@@ -42,7 +43,7 @@ public class BaseCanvas : MonoBehaviour
         StartCoroutine(canvasGroup.SkibidiFade(fadeSettings, OnOpenComplete, isReverse: true));
     }
 
-    protected virtual void OnOpenComplete()
+    public virtual void OnOpenComplete()
     {
         isTweening = false;
         canvasGroup.interactable = true;
@@ -70,11 +71,17 @@ public class BaseCanvas : MonoBehaviour
         StartCoroutine(canvasGroup.SkibidiFade(fadeSettings, OnCloseComplete, isReverse: false));
     }
 
-    protected virtual void OnCloseComplete()
+    public virtual void OnCloseComplete()
     {
         isTweening = false;
         canvasGroup.interactable = true;
         gameObject.SetActive(false);
+    }
+
+    public void CloseImmediate()
+    {
+        StopAllCoroutines();
+        OnCloseComplete();
     }
 
 #region Editor
@@ -105,5 +112,7 @@ public class BaseCanvas : MonoBehaviour
             elementSettings[i].SetAsHide();
         }
     }
-#endregion
+
+    
+    #endregion
 }

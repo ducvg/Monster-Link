@@ -20,9 +20,10 @@ public class LineDrawerSO : ScriptableObject
 
         var line = lineFactory.CreateLine(pathVector);
         var matchTile = BoardManager.Instance.board[path[0].x, path[0].y] as MatchTile;
-        matchTile.OnConnectAction += () =>
+        matchTile.lineDespawnAction += () =>
         {
             line.OnDespawn(duration);
+            matchTile.lineDespawnAction = null;
         };
     }
 }

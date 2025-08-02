@@ -3,29 +3,24 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-//TODO: Implement SkibidiTween, a tweening library
+//my tweening library
 #pragma warning disable IDE0130 // Shut the ide up
 namespace Utility.SkibidiTween
 #pragma warning restore IDE0130
 {
     public static class SkibidiTween
     {
-        public static IEnumerator SkibidiMoveAtSpeed(this Transform target, Vector3 end, float speed, Action onComplete = null, bool isReverse = false)
+        public static IEnumerator SkibidiMoveAtSpeed(this Transform target, Vector3 end, float speed, Action onComplete = null, Action onUpdate = null, bool isReverse = false)
         {
-            if(speed <= 0 || target.position == end)
-            {
-                onComplete?.Invoke();
-                yield break;
-            }
-
             Vector3 startPos = isReverse ? end : target.position;
             Vector3 endPos = isReverse ? target.position : end;
 
             target.position = startPos;
 
-            while ((target.position - endPos).sqrMagnitude > 0.001f)
+            while ((target.position - endPos).sqrMagnitude > 0.0001f)
             {
                 target.position = Vector3.MoveTowards(target.position, endPos, Time.deltaTime * speed);
+                onUpdate?.Invoke();
                 yield return null;
             }
             target.position = endPos;

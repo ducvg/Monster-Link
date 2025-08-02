@@ -1,116 +1,50 @@
 using System;
-using System.Collections;
-using System.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameManager : PersistentSingleton<GameManager>
 {
-    [SerializeField] private float delaySceneTime = 1f;
+    public PlayerDataProfileSO PlayerDataProfile { get => playerDataProfile; }
+    [SerializeField] private PlayerDataProfileSO playerDataProfile;
 
     void Start()
     {
-        StartCoroutine(LoadScene
+        LoadScene(GameScene.Home,
+        onComplete:() =>
+        {
+            LevelManager.Instance.OnInit();
+        }
+        );
+        SaveSystem.Load();
+        playerDataProfile.Load();
+    }
+
+    public void LoadScene(GameScene loadScene, Action onComplete = null)
+    {
+        StartCoroutine(SceneLoader.LoadScene
         (
-            GameScene.Gameplay, 
-            onComplete: () => 
-            {
-                UIManager.Instance.Open<GameplayCanvas>().OnInit();
-            }
+            loadScene, 
+            onComplete
         ));
     }
 
-    void Update()
+    public void LoadSceneQuick(GameScene loadScene, Action onComplete = null)
     {
-        if(Input.GetKeyDown(KeyCode.O))
-        {
-            UIManager.Instance.Open<GameplayWinCanvas>();
-        }
-
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            UIManager.Instance.Open<GameplayLoseCanvas>();
-        }
-
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            UIManager.Instance.CloseAll();
-        }
+        StartCoroutine(SceneLoader.LoadSceneQuick
+        (
+            loadScene, 
+            onComplete
+        ));
     }
 
-    public IEnumerator LoadScene(string sceneName, Action onComplete)
+    void OnApplicationQuit()
     {
-        UIManager.Instance.CloseAll();
-        var loadingCanvas = UIManager.Instance.Open<LoadingCanvas>();
-        loadingCanvas.OnInit();
-    
-        AsyncOperation scene = SceneManager.LoadSceneAsync(sceneName);
-        scene.allowSceneActivation = false;
-
-        do
-        {
-            loadingCanvas.LoadingBar = Mathf.MoveTowards(loadingCanvas.LoadingBar, scene.progress, Time.deltaTime);
-            loadingCanvas.ProgressText = (loadingCanvas.LoadingBar * 100).ToString("F0");
-            yield return null;
-        } while (loadingCanvas.LoadingBar < 0.9f); // stop at 0.9f until allowSceneActivation is true
-
-        loadingCanvas.OnComplete();
-        while(loadingCanvas.LoadingBar < 1f)
-        {
-            loadingCanvas.LoadingBar = Mathf.MoveTowards(loadingCanvas.LoadingBar, 1f, Time.deltaTime);
-            loadingCanvas.ProgressText = (loadingCanvas.LoadingBar * 100).ToString("F0");
-            yield return null;
-        }
-        
-        yield return new WaitForSeconds(delaySceneTime);
-        scene.allowSceneActivation = true;
-        yield return null;
-        UIManager.Instance.Close<LoadingCanvas>();
-        onComplete?.Invoke();
+        SaveSystem.Save();
     }
-
-    private void GameWin()
-    {
-        UIManager.Instance.Open<GameplayWinCanvas>();
-    }
-    private void GameLose()
-    {
-        UIManager.Instance.Open<GameplayLoseCanvas>();
-    }
-
-    private void PauseGame() 
-    {
-        // GameState.isPause = true;
-    }
-    private void ResumeGame() 
-    {
-        // GameState.isPause = false;
-    }
-
-    void OnEnable()
-    {
-        GameState.OnGamePause += PauseGame;
-        GameState.OnGameResume += ResumeGame;
-        GameState.OnGameWon += GameWin;
-        GameState.OnGameLost += GameLose;
-    }
-    
-    void OnDisable()
-    {
-        GameState.OnGamePause -= PauseGame;
-        GameState.OnGameResume -= ResumeGame;
-        GameState.OnGameWon -= GameWin;
-        GameState.OnGameLost -= GameLose;
-    }
-
 }
 
-
-public static class GameScene
+public enum GameScene
 {
-    public const string Home = "Home";
-    public const string Gameplay = "Gameplay";
-    public const string Loading = "Loading";
+    Loading = 0,
+    Home = 1,
+    Gameplay = 2,
 }

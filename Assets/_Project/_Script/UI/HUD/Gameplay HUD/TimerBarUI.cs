@@ -31,6 +31,7 @@ public class TimerBarUI : MonoBehaviour
             timer = 0;
             isTimerRunning = false;
             GameState.OnGameLost?.Invoke();
+            UIManager.Instance.Open<GameplayLoseCanvas>();
         }
 
         UpdateUI();

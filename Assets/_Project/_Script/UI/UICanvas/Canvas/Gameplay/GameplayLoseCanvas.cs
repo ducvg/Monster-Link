@@ -2,15 +2,21 @@ using UnityEngine;
 
 public class GameplayLoseCanvas : BaseCanvas
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private PlayerDataProfileSO playerDataProfile;
+
+    public void Retry()
     {
-        
+        GameManager.Instance.LoadSceneQuick(GameScene.Gameplay, () =>
+        {
+            LevelManager.Instance.SpawnLevel(LevelManager.Instance.CurrentLevel);
+        });
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Quit()
     {
-        
+        GameManager.Instance.LoadSceneQuick(GameScene.Home, () =>
+        {
+            UIManager.Instance.Open<HomeCanvas>();
+        });
     }
 }

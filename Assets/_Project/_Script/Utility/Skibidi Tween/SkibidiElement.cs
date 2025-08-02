@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -29,7 +30,7 @@ public class SkibidiElement : MonoBehaviour
     }
 
     public void Move(bool isReverse) => StartCoroutine(rectTransform.SkibidiMove(moveSettings, null, isReverse));
-    public void Rpublicotate(bool isReverse) => StartCoroutine(rectTransform.SkibidiRotate(rotationSettings, null, isReverse));
+    public void Rotate(bool isReverse) => StartCoroutine(rectTransform.SkibidiRotate(rotationSettings, null, isReverse));
     public void Scale(bool isReverse) => StartCoroutine(rectTransform.SkibidiScale(scaleSettings, null, isReverse));
     public void Fade(bool isReverse) => StartCoroutine(elementGraphic.SkibidiFade(colorSettings, null, isReverse));
 

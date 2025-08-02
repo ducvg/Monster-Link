@@ -30,20 +30,6 @@ public class UIManager : PersistentSingleton<UIManager>
         return canvas;
     }
 
-    public BaseCanvas Open(BaseCanvas prefab)
-    {
-        Type canvasType = prefab.GetType();
-        
-        if (!activeCanvases.ContainsKey(canvasType))
-        {
-            BaseCanvas instance = Instantiate(prefab, canvasRoot);
-            activeCanvases[canvasType] = instance;
-            instance.Setup();
-        }
-        
-        return activeCanvases[canvasType];
-    }
-
     public void Close<T>(float delay) where T : BaseCanvas
     {
         if (IsOpened<T>())
@@ -57,6 +43,14 @@ public class UIManager : PersistentSingleton<UIManager>
         if (IsOpened<T>())
         {
             activeCanvases[typeof(T)].Close();
+        }
+    }
+
+    public void CloseImmediate<T>() where T : BaseCanvas
+    {
+        if (IsOpened<T>())
+        {
+            activeCanvases[typeof(T)].CloseImmediate();
         }
     }
 

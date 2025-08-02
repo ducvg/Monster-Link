@@ -19,7 +19,7 @@ public class MatchTile : GameTile, IPointerClickHandler
     [SerializeField] protected bool isInteractable = true;
 
     
-    public Action OnConnectAction;
+    public Action lineDespawnAction;
     private int currentAnim;
 
     protected override void Awake()
@@ -84,7 +84,7 @@ public class MatchTile : GameTile, IPointerClickHandler
 
     public virtual void OnConnect()
     {
-        OnConnectAction?.Invoke();
+        lineDespawnAction?.Invoke();
         isInteractable = false;
         transform.position = transform.position.WithZ(-1f); //show above otherr
         ApplyEffect();
@@ -94,12 +94,12 @@ public class MatchTile : GameTile, IPointerClickHandler
         OnDespawn();
     }
 
-    public override void MoveTo(Vector3 destination, float speed = 5f, Action onComplete = null)
+    public override void MoveTo(Vector3 destination, float speed = 5f, Action onComplete = null, Action onUpdate = null)
     {
+        GamePowerState.isAllow = false;  //disable powers when board is moving
         StopAllCoroutines();
         isInteractable = false;
-        GamePowerState.isAllow = false;  //disable powers when board is moving
-        base.MoveTo(destination, speed, onComplete);
+        base.MoveTo(destination, speed, onComplete, () => GamePowerState.isAllow = false);
     }
 
     protected override void OnMoveComplete()

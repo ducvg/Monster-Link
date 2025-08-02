@@ -4,11 +4,11 @@ using UnityEngine;
 public class ShuffleEffect : TileEffect
 {
     [Header("Shuffle effect Properties")]
-    [SerializeField] private PlayerPowerSO playerPowerData;
+    [SerializeField] private PlayerDataProfileSO playerDataProfile;
 
     public override void ApplyEffect()
     {
-        playerPowerData.Shuffle++;
+        playerDataProfile.PowerData.Shuffle++;
     }
 
     public override void RemoveEffect()

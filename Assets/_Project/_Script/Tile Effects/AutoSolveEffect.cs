@@ -4,11 +4,11 @@ using UnityEngine;
 public class AutoSolveEffect : TileEffect
 {
     [Header("AutoSolve effect Properties")]
-    [SerializeField] private PlayerPowerSO playerPowerData;
+    [SerializeField] private PlayerDataProfileSO playerDataProfile;
 
     public override void ApplyEffect()
     {
-        playerPowerData.AutoSolve++;
+        playerDataProfile.PowerData.AutoSolve++;
     }
 
     public override void RemoveEffect()

@@ -11,21 +11,34 @@ public static class GameBoard
 
         if(matchTiles.Count == 0) return;
 
+        int escape = 0;
+        int tileCount = matchTiles.Count;
+        List<MatchTile> matchTilesCopy;
         do
         {
-            int rolls = (int)Random.Range(matchTiles.Count * 0.5f, matchTiles.Count);
+            matchTilesCopy = new(matchTiles);
+            int rolls = (int)Random.Range(tileCount * 0.5f, tileCount);
             while (rolls-- > 0)
             {
-                var tile1 = matchTiles.GetRandomElement();
-                MatchTile tile2;
-                do
-                {
-                    tile2 = matchTiles.GetRandomElement();
-                } while (tile1 == tile2);
+                if (matchTilesCopy.Count < 2) break;
+                
+                var tile1 = matchTilesCopy.GetRandomElement();
+                matchTilesCopy.Remove(tile1);
+                var tile2 = matchTilesCopy.GetRandomElement();
+                matchTilesCopy.Remove(tile2);
+
+                tile1.lineDespawnAction?.Invoke();
+                tile2.lineDespawnAction?.Invoke();
 
                 SwapTiles(tile1, tile2);
             }
-        } while (FindAnyPath() == null);
+        } while (FindAnyPath() == null && escape++ < 1000);
+
+        if(escape >= 1000)
+        {
+            GameState.OnGameWon?.Invoke();
+            UIManager.Instance.Open<GameplayWinCanvas>();
+        }
     }
 
     private static void SwapTiles(GameTile tile1, GameTile tile2)
@@ -243,6 +256,8 @@ public static class GameBoard
         var tilemap = BoardManager.Instance.BoardTilemap;
         int x = tileConnected.BoardPosition.x;
 
+        var cacheVec = Vector3Int.zero;
+
         for (int y = colLength - 1; y > 0; y--)
         {
             GameTile upperTile = board[x, y];
@@ -250,8 +265,11 @@ public static class GameBoard
             GameTile tileToPull = board[x, y-1];
             if(tileToPull == null || !tileToPull.IsMovable) continue;
 
-            tileToPull.MoveTo(tilemap.GetCellCenterWorld(new Vector3Int(x, y)));
-            tileToPull.BoardPosition = new Vector3Int(x, y);
+            cacheVec.x = x; 
+            cacheVec.y = y;
+
+            tileToPull.MoveTo(tilemap.GetCellCenterWorld(cacheVec));
+            tileToPull.BoardPosition = cacheVec;
             board[x, y] = tileToPull;
             board[x, y-1] = null;
         }

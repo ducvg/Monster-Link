@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameplayCanvas : BaseCanvas
 {
@@ -9,24 +10,24 @@ public class GameplayCanvas : BaseCanvas
     [SerializeField] private TextMeshProUGUI shuffleTMP;
     [SerializeField] private TimerBarUI timerBar;
 
-    [SerializeField] private PlayerDataSO playerData;
+    [SerializeField] private PlayerDataProfileSO playerDataProfile;
 
     public void OnInit()
     {
         timerBar.OnInit();
 
-        autoSolveTMP.text = playerData.PowerData.AutoSolve.ToString();
-        shuffleTMP.text = playerData.PowerData.Shuffle.ToString();
+        autoSolveTMP.text = playerDataProfile.PowerData.AutoSolve.ToString();
+        shuffleTMP.text = playerDataProfile.PowerData.Shuffle.ToString();
     }
 
     public void OnAutoSolveClick()
     {
-        playerData.PowerData.UseAutoSolve();
+        playerDataProfile.PowerData.UseAutoSolve();
     }
 
     public void OnShuffleClick()
     {
-        playerData.PowerData.UseShuffle();
+        playerDataProfile.PowerData.UseShuffle();
     }
 
     public void OnInventoryClick()
@@ -43,12 +44,12 @@ public class GameplayCanvas : BaseCanvas
 
     private void UpdateShuffleTMP()
     {
-        shuffleTMP.text = playerData.PowerData.Shuffle.ToString();
+        shuffleTMP.text = playerDataProfile.PowerData.Shuffle.ToString();
     }
 
     private void UpdateAutoSolveTMP()
     {
-        autoSolveTMP.text = playerData.PowerData.AutoSolve.ToString();
+        autoSolveTMP.text = playerDataProfile.PowerData.AutoSolve.ToString();
     }
 
     void EnableInteract()
