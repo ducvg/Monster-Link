@@ -7,6 +7,8 @@ public class BoardManager : Singleton<BoardManager>
 {
     [field: SerializeField] public Vector2Int BoardSize { get; private set; } = new Vector2Int(15, 6);
     [field: SerializeField] public Tilemap BoardTilemap { get; private set; }
+    [field: SerializeField] public float LevelTime { get; private set; } = 300f;
+
     public GravityDirection GravityDirection 
     {
         get => gravityDirection;
@@ -24,7 +26,7 @@ public class BoardManager : Singleton<BoardManager>
     public GameTile[,] board;
     public int MatchTileCount { get; set; }
 
-#region Debug
+    #region Debug
     [Header("Debug")]
     [SerializeField, InspectorName("Show board border")] private bool isDebugBorder = true;
     [SerializeField, InspectorName("Show board position")] private bool isDebugPosition = true;
@@ -38,14 +40,14 @@ public class BoardManager : Singleton<BoardManager>
 
     void Start()
     {
-        ShowBoard();
-
         boardGenerator.FillBoard();
         boardGenerator.GenerateTileEffects();
+        GameBoard.ApplyGravityAll(GravityDirection, isSkipAnimation: true);
 
         MatchTileCount = GameBoard.GetMatchTiles().Count;
 
         if(GameBoard.FindAnyPath() == null) Shuffle();
+        ShowBoard();
     }   
 
     public void AutoSolve()

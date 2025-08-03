@@ -1,46 +1,57 @@
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 
 [Serializable]
 public static class SaveSystem
 {
     public static bool isCorrupted = false;
-    public static GameData gameData = new();
+    public static UserData userData = new();
+
+    public static async Task SaveAsync()
+    {
+        var task = Task.Run(() => 
+        {
+            Save();
+        });
+        await task;
+    }
 
     public static void Save()
     {
-        if (!isCorrupted)
-        {
-            FileService.SaveLocal("/save.sav",gameData, false);
-        } else
+        if(isCorrupted)
         {
             Debug.LogError("Game data is corrupted, save disable.");
+            return;
         }
+        FileService.SaveLocal("/save.sav",userData, false);
     }
-
-    public static GameData Load()
+    
+    public static UserData Load()
     {
         try
         {
-            gameData = FileService.LoadLocal<GameData>("/save.sav", false);
-            if (gameData == null)
+            userData = FileService.LoadLocal<UserData>("/save.sav", false);
+            if (userData == null)
             {
-                gameData = new();
+                userData = new();
             }
         }
         catch (Exception e)
         {
             Debug.LogError("Failed to load game data: " + e.Message);
-            gameData = new();
+            userData = new();
         }
         
-        return gameData;
+        return userData;
     }
 
 }
 
-public class GameData 
+public class UserData 
 {
     public PlayerData playerData = new();
     public PlayerPowerData powerData = new();
+    public SettingConfig settingConfig = new();
 }

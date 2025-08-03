@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public static class SceneLoader
 {
-    public static IEnumerator LoadScene(GameScene loadScene, Action onComplete)
+    public static IEnumerator LoadScene(GameScene loadScene, Action onComplete, Task additionalTask = null)
     {
         UIManager.Instance.CloseAll();
         LoadingCanvas loadingCanvas = UIManager.Instance.Open<LoadingCanvas>();

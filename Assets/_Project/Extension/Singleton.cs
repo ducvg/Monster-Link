@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {

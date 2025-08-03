@@ -9,6 +9,7 @@ public class LevelSlot : MonoBehaviour
     [SerializeField] private GameObject locker;
 
     [field: SerializeField] public int LevelIndex { get; set; } = 0;
+    public Button Button { get => button; }
 
 
     public void UpdateLevelText()
@@ -24,9 +25,11 @@ public class LevelSlot : MonoBehaviour
 
     public void StartLevel()
     {
+        SoundManager.Instance.PlayFx(FxID.Level_Select);
         GameManager.Instance.LoadSceneQuick(GameScene.Gameplay, () =>
         {
             LevelManager.Instance.SpawnLevel(LevelIndex);
+            SoundManager.Instance.ChangeSound(SoundID.Gameplay_BG, 1);
         });
     }
 }

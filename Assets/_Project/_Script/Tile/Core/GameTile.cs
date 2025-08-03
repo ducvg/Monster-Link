@@ -10,7 +10,6 @@ public class GameTile : MonoBehaviour
 
     public Vector3Int BoardPosition { get; set; }
 
-
     protected virtual void Awake()
     {
         OnInit();
@@ -40,7 +39,6 @@ public class GameTile : MonoBehaviour
 
     public virtual void OnDespawn()
     {
-        
     }
 
     protected virtual void OnDestroy()

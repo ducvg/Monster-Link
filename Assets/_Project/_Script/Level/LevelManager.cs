@@ -2,12 +2,17 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class LevelManager : PersistentSingleton<LevelManager>
+public class LevelManager : Singleton<LevelManager>
 {
     public Dictionary<int, BoardManager> BoardLevels { get; private set; }
     public int CurrentLevel { get; private set; }
 
     [SerializeField] private PlayerDataProfileSO playerDataProfile;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
     public void OnInit()
     {
@@ -25,7 +30,7 @@ public class LevelManager : PersistentSingleton<LevelManager>
 
     private void OnLevelComplete()
     {
-        playerDataProfile.PlayerData.MaxLevel = Mathf.Max(playerDataProfile.PlayerData.MaxLevel, CurrentLevel);
+        playerDataProfile.PlayerData.MaxCompletedLevel = Mathf.Max(playerDataProfile.PlayerData.MaxCompletedLevel, CurrentLevel);
         playerDataProfile.Save();
     }
 

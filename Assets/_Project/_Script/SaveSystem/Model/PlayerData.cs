@@ -5,16 +5,16 @@ using UnityEngine;
 [Serializable]
 public class PlayerData
 {
-    [SerializeField] private int maxLevel = 0;
+    [SerializeField] private int maxCompletedLevel = 0;
     [SerializeField] private int lastPlayedLevel = 1;
     [SerializeField] private int playerGold = 0;
 
     [JsonIgnore]
-    public int MaxLevel { 
-        get => maxLevel;
+    public int MaxCompletedLevel { 
+        get => maxCompletedLevel;
         set
         {
-            maxLevel = value;
+            maxCompletedLevel = value;
         }
     }
 

@@ -5,16 +5,19 @@ using UnityEngine.UI;
 
 public class GameplayCanvas : BaseCanvas
 {
-    [Header("Gameplay Canvas Settings")]
     [SerializeField] private TextMeshProUGUI autoSolveTMP;
     [SerializeField] private TextMeshProUGUI shuffleTMP;
-    [SerializeField] private TimerBarUI timerBar;
-
     [SerializeField] private PlayerDataProfileSO playerDataProfile;
 
-    public void OnInit()
+    private void Start()
     {
-        timerBar.OnInit();
+        Setup();
+    }
+
+    public override void Setup()
+    {
+        base.Setup();
+        canvasGroup.interactable = true;
 
         autoSolveTMP.text = playerDataProfile.PowerData.AutoSolve.ToString();
         shuffleTMP.text = playerDataProfile.PowerData.Shuffle.ToString();
@@ -22,21 +25,24 @@ public class GameplayCanvas : BaseCanvas
 
     public void OnAutoSolveClick()
     {
+        SoundManager.Instance.PlayFx(FxID.Button);
         playerDataProfile.PowerData.UseAutoSolve();
     }
 
     public void OnShuffleClick()
     {
+        SoundManager.Instance.PlayFx(FxID.Button);
         playerDataProfile.PowerData.UseShuffle();
     }
 
     public void OnInventoryClick()
     {
-
+        SoundManager.Instance.PlayFx(FxID.Button);
     }
 
     public void OnSettingClick()
     {
+        SoundManager.Instance.PlayFx(FxID.Button);
         GameState.OnGamePause?.Invoke();
 
         UIManager.Instance.Open<GameplaySettingCanvas>();
@@ -66,6 +72,7 @@ public class GameplayCanvas : BaseCanvas
     {
         GamePowerState.OnShuffleUpdate += UpdateShuffleTMP;
         GamePowerState.OnAutoSolveUpdate += UpdateAutoSolveTMP;
+        GameState.OnGameWon += DisableInteract;
         GameState.OnGamePause += DisableInteract;
         GameState.OnGameResume += EnableInteract;
     }
@@ -74,6 +81,7 @@ public class GameplayCanvas : BaseCanvas
     {
         GamePowerState.OnShuffleUpdate -= UpdateShuffleTMP;
         GamePowerState.OnAutoSolveUpdate -= UpdateAutoSolveTMP;
+        GameState.OnGameWon -= DisableInteract;
         GameState.OnGamePause -= DisableInteract;
         GameState.OnGameResume -= EnableInteract;
         

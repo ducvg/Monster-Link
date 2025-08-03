@@ -2356,11 +2356,15 @@ PrefabInstance:
       objectReference: {fileID: 4615084152461635449, guid: cd0ad8d6b808c4b4eb62f2d51a2463c3, type: 3}
     - target: {fileID: 2869292177774929352, guid: 34356ffd414495e42bfbe1aa97ae3f58, type: 3}
       propertyPath: m_Name
-      value: Level_3
+      value: Level_13
       objectReference: {fileID: 0}
     - target: {fileID: 3750810210454013935, guid: 34356ffd414495e42bfbe1aa97ae3f58, type: 3}
       propertyPath: gravityDirection
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3750810210454013935, guid: 34356ffd414495e42bfbe1aa97ae3f58, type: 3}
+      propertyPath: <LevelTime>k__BackingField
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 4683246467042762784, guid: 34356ffd414495e42bfbe1aa97ae3f58, type: 3}
       propertyPath: m_Tiles.Array.size

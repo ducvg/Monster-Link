@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
+using Utility.SkibidiTween;
 using Random = UnityEngine.Random;
 
 public static class GameBoard
 {
-    public static void Shuffle()
+
+#region Shuffle
+    public static void Shuffle() //swapping positions of match tiles
     {
         List<MatchTile> matchTiles = GetMatchTiles();
 
@@ -32,13 +34,45 @@ public static class GameBoard
 
                 SwapTiles(tile1, tile2);
             }
-        } while (FindAnyPath() == null && escape++ < 1000);
+        } while (FindAnyPath() == null && escape++ < 100);
 
-        if(escape >= 1000)
+        if(escape >= 100)
         {
-            GameState.OnGameWon?.Invoke();
-            UIManager.Instance.Open<GameplayWinCanvas>();
+            ShuffleRandomPosition();
         }
+    }
+
+    public static void ShuffleRandomPosition()
+    {
+        List<Vector3Int> validPositions = GetPositionsExceptType<ObstacleTile>();
+        if(validPositions.Count < 2) return;
+
+        int escape = 0;
+        int posCount = validPositions.Count;
+        List<Vector3Int> validPositionsCopy;
+        do
+        {
+            validPositionsCopy = new(validPositions);
+            int rolls = (int)Random.Range(posCount * 0.5f, posCount);
+            while (rolls-- > 0)
+            {
+                if (validPositionsCopy.Count < 2) break;
+                
+                var pos1 = validPositionsCopy.GetRandomElement();
+                validPositionsCopy.Remove(pos1);
+                var pos2 = validPositionsCopy.GetRandomElement();
+                validPositionsCopy.Remove(pos2);
+
+                var tile1 = BoardManager.Instance.board[pos1.x, pos1.y];
+                var tile2 = BoardManager.Instance.board[pos2.x, pos2.y];
+
+                SwapBoardPositions(pos1, pos2);
+
+                if(tile1 is MatchTile matchTile1) matchTile1.lineDespawnAction?.Invoke();
+                if(tile2 is MatchTile matchTile2) matchTile2.lineDespawnAction?.Invoke();
+            }
+            ApplyGravityAll(BoardManager.Instance.GravityDirection, isSkipAnimation: true);
+        } while (FindAnyPath() == null && escape++ < 100);
     }
 
     private static void SwapTiles(GameTile tile1, GameTile tile2)
@@ -49,6 +83,33 @@ public static class GameBoard
         (tile2.transform.position, tile1.transform.position) = (tile1.transform.position, tile2.transform.position);
         (tile2.BoardPosition, tile1.BoardPosition) = (tile1.BoardPosition, tile2.BoardPosition);
     }
+
+    private static void SwapBoardPositions(Vector3Int pos1, Vector3Int pos2)
+    {
+        var board = BoardManager.Instance.board;
+        var tilemap = BoardManager.Instance.BoardTilemap;
+
+        var tile1 = board[pos1.x, pos1.y];
+        var tile2 = board[pos2.x, pos2.y];
+
+        // Swap in board array
+        board[pos1.x, pos1.y] = tile2;
+        board[pos2.x, pos2.y] = tile1;
+
+        // Update board positions
+        if (tile1 != null)
+        {
+            tile1.BoardPosition = pos2;
+            tile1.transform.position = tilemap.GetCellCenterWorld(pos2);
+        }
+
+        if (tile2 != null)
+        {
+            tile2.BoardPosition = pos1;
+            tile2.transform.position = tilemap.GetCellCenterWorld(pos1);
+        }
+    }
+#endregion
 
 #region Connect 2 tiles
     public static List<(int x, int y)> TurnBFS((int x, int y) start, (int x, int y) target)
@@ -109,27 +170,6 @@ public static class GameBoard
     public static List<(int x, int)> Connect(MatchTile start, MatchTile target)
         => TurnBFS((start.BoardPosition.x, start.BoardPosition.y), (target.BoardPosition.x, target.BoardPosition.y));
 
-    private static bool IsBlocked((int x, int y) position)
-    {
-        var board = BoardManager.Instance.board;
-        var colLength = BoardManager.Instance.BoardSize.y;
-        var rowLength = BoardManager.Instance.BoardSize.x;
-
-        if (position.x < -1 || position.x > rowLength
-        || position.y < -1 || position.y > colLength) //out of bounds cases
-        {
-            return true;
-        }
-
-        if (position.x == -1 || position.x == rowLength
-        || position.y == -1 || position.y == colLength) //allow outside 1 for edge searches
-        {
-            return false;
-        }
-
-        var tile = board[position.x, position.y];
-        return tile != null && tile.IsBlockable;
-    }
 #endregion
 
 #region Find any connection
@@ -185,7 +225,173 @@ public static class GameBoard
         return tileGroups;
     }
 #endregion
+ 
+#region Apply Gravity
+    public static void ApplyGravityAll(GravityDirection gravityDirection, bool isSkipAnimation)
+    {
+        if(gravityDirection == GravityDirection.None) return;
 
+        var xLength = BoardManager.Instance.BoardSize.x;
+        var yLength = BoardManager.Instance.BoardSize.y;
+
+        switch (gravityDirection)
+        {
+            case GravityDirection.Up:
+                for(int x = 0; x < xLength; x++) 
+                    for(int y = 0; y < yLength; y++)
+                        ApplyGravityUpAt(x, isSkipAnimation); //apply gravity up each column y times
+                break;
+            case GravityDirection.Down:
+                for(int x = 0; x < xLength; x++) 
+                    for(int y = 0; y < yLength; y++)
+                        ApplyGravityDownAt(x, isSkipAnimation); 
+                break;
+            case GravityDirection.Left:
+                for(int y = 0; y < yLength; y++) 
+                    for(int x = 0; x < xLength; x++)
+                        ApplyGravityLeftAt(y, isSkipAnimation); //apply gravity left each row x times
+                break;
+            case GravityDirection.Right:
+                for(int y = 0; y < yLength; y++) 
+                    for(int x = 0; x < xLength; x++)
+                        ApplyGravityRightAt(y, isSkipAnimation);
+                break;
+        }
+    }
+
+    public static void ApplyGravityAt(GameTile tileConnected, GravityDirection gravityDirection)
+    {
+        if(gravityDirection == GravityDirection.None) return;
+        
+        var colLength = BoardManager.Instance.BoardSize.y;
+        var rowLength = BoardManager.Instance.BoardSize.x;
+
+        switch (gravityDirection)
+        {
+            case GravityDirection.Up:
+                for(int y = 0; y < colLength; y++)
+                    ApplyGravityUpAt(tileConnected.BoardPosition.x); //apply gravity up in tile's column y times
+                break;
+            case GravityDirection.Down:
+                for(int y = 0; y < colLength; y++)
+                    ApplyGravityDownAt(tileConnected.BoardPosition.x);
+                break;
+            case GravityDirection.Left:
+                for(int x = 0; x < rowLength; x++)
+                    ApplyGravityLeftAt(tileConnected.BoardPosition.y); //apply gravity left in tile's row x times
+                break;
+            case GravityDirection.Right:
+                for(int x = 0; x < rowLength; x++)
+                    ApplyGravityRightAt(tileConnected.BoardPosition.y);
+                break;
+        }
+    }
+
+    private static void ApplyGravityUpAt(int colIndex, bool isSkipAnimation = false) //pull all tiles up this in this tile column
+    {
+        var board = BoardManager.Instance.board;
+        var colLength = BoardManager.Instance.BoardSize.y;
+        var tilemap = BoardManager.Instance.BoardTilemap;
+        int x = colIndex;
+
+        var cacheVec = Vector3Int.zero;
+        for (int y = colLength - 1; y > 0; y--)
+        {
+            if(board[x, y] != null) continue;
+            GameTile tileToPull = board[x, y-1];
+            if(tileToPull == null || !tileToPull.IsMovable) continue;
+
+            cacheVec.x = x; 
+            cacheVec.y = y;
+
+            if(!isSkipAnimation) tileToPull.MoveTo(tilemap.GetCellCenterWorld(cacheVec));
+            else tileToPull.transform.position = tilemap.GetCellCenterWorld(cacheVec);
+            tileToPull.BoardPosition = cacheVec;
+            board[x, y] = tileToPull;
+            board[x, y-1] = null;
+        }
+        
+    }
+
+    private static void ApplyGravityDownAt(int colIndex, bool isSkipAnimation = false)
+    {
+        var board = BoardManager.Instance.board;
+        var colLength = BoardManager.Instance.BoardSize.y;
+        var tilemap = BoardManager.Instance.BoardTilemap;
+        int x = colIndex;
+
+        var cacheVec = Vector3Int.zero;
+        for (int y = 0; y < colLength - 1; y++)
+        {
+            if(board[x, y] != null) continue;
+            GameTile tileToPush = board[x, y+1];
+            if(tileToPush == null || !tileToPush.IsMovable) continue;
+
+            cacheVec.x = x;
+            cacheVec.y = y;
+
+            if(!isSkipAnimation) tileToPush.MoveTo(tilemap.GetCellCenterWorld(cacheVec));
+            else tileToPush.transform.position = tilemap.GetCellCenterWorld(cacheVec);
+            tileToPush.BoardPosition = cacheVec;
+            board[x, y] = tileToPush;
+            board[x, y+1] = null;
+        }
+    }
+
+    private static void ApplyGravityLeftAt(int rowIndex, bool isSkipAnimation = false)
+    {
+        var board = BoardManager.Instance.board;
+        var rowLength = BoardManager.Instance.BoardSize.x;
+        var tilemap = BoardManager.Instance.BoardTilemap;
+        int y = rowIndex;
+
+        var cacheVec = Vector3Int.zero;
+        for (int x = 0; x < rowLength - 1; x++)
+        {
+            GameTile leftTile = board[x, y];
+            if(leftTile != null) continue;
+            GameTile tileToPush = board[x+1, y];
+            if(tileToPush == null || !tileToPush.IsMovable) continue;
+
+            cacheVec.x = x;
+            cacheVec.y = y;
+
+            if(!isSkipAnimation) tileToPush.MoveTo(tilemap.GetCellCenterWorld(cacheVec));
+            else tileToPush.transform.position = tilemap.GetCellCenterWorld(cacheVec);
+            tileToPush.BoardPosition = cacheVec;
+            board[x, y] = tileToPush;
+            board[x+1, y] = null;
+        }
+    }   
+
+    private static void ApplyGravityRightAt(int rowIndex, bool isSkipAnimation = false)
+    {
+        var board = BoardManager.Instance.board;
+        var rowLength = BoardManager.Instance.BoardSize.x;
+        var tilemap = BoardManager.Instance.BoardTilemap;
+        int y = rowIndex;
+
+        var cacheVec = Vector3Int.zero;
+        for (int x = rowLength - 1; x > 0; x--)
+        {
+            GameTile rightTile = board[x, y];
+            if(rightTile != null) continue;
+            GameTile tileToPush = board[x-1, y];
+            if(tileToPush == null || !tileToPush.IsMovable) continue;
+
+            cacheVec.x = x;
+            cacheVec.y = y;
+
+            if(!isSkipAnimation) tileToPush.MoveTo(tilemap.GetCellCenterWorld(cacheVec));
+            else tileToPush.transform.position = tilemap.GetCellCenterWorld(cacheVec);
+            tileToPush.BoardPosition = cacheVec;
+            board[x, y] = tileToPush;
+            board[x-1, y] = null;
+        }
+    }
+#endregion
+
+#region Helpers
     public static List<(int x, int y)> GetEmptyPositions()
     {
         var board = BoardManager.Instance.board;
@@ -204,6 +410,25 @@ public static class GameBoard
             }
         }
         return unfilledPositions;
+    }
+
+    public static List<Vector3Int> GetPositionsExceptType<T>() where T : GameTile
+    {
+        var board = BoardManager.Instance.board;
+        var colLength = BoardManager.Instance.BoardSize.y;
+        var rowLength = BoardManager.Instance.BoardSize.x;
+
+        List<Vector3Int> positions = new(); 
+        
+        for(int x = 0; x < rowLength; x++)
+        {
+            for(int y = 0; y < colLength; y++)
+            {
+                if(board[x, y] is not T) positions.Add(new Vector3Int(x, y, 0));
+            }
+        }
+
+        return positions;
     }
 
     public static List<MatchTile> GetMatchTiles()
@@ -228,115 +453,27 @@ public static class GameBoard
 
         return matchTiles;
     }
-    
-#region Apply Gravity
-    public static void ApplyGravity(GameTile tileConnected, GravityDirection gravityDirection)
-    {
-        switch (gravityDirection)
-        {
-            case GravityDirection.Up:
-                ApplyGravityUp(tileConnected);
-                break;
-            case GravityDirection.Down:
-                ApplyGravityDown(tileConnected);
-                break;
-            case GravityDirection.Left:
-                ApplyGravityLeft(tileConnected);
-                break;
-            case GravityDirection.Right:
-                ApplyGravityRight(tileConnected);
-                break;
-        }
-    }
 
-    private static void ApplyGravityUp(GameTile tileConnected) //pull all tiles up this in this tile column
+    private static bool IsBlocked((int x, int y) position)
     {
         var board = BoardManager.Instance.board;
         var colLength = BoardManager.Instance.BoardSize.y;
-        var tilemap = BoardManager.Instance.BoardTilemap;
-        int x = tileConnected.BoardPosition.x;
-
-        var cacheVec = Vector3Int.zero;
-
-        for (int y = colLength - 1; y > 0; y--)
-        {
-            GameTile upperTile = board[x, y];
-            if(upperTile != null) continue;
-            GameTile tileToPull = board[x, y-1];
-            if(tileToPull == null || !tileToPull.IsMovable) continue;
-
-            cacheVec.x = x; 
-            cacheVec.y = y;
-
-            tileToPull.MoveTo(tilemap.GetCellCenterWorld(cacheVec));
-            tileToPull.BoardPosition = cacheVec;
-            board[x, y] = tileToPull;
-            board[x, y-1] = null;
-        }
-        
-    }
-
-    private static void ApplyGravityDown(GameTile tileConnected)
-    {
-        var board = BoardManager.Instance.board;
-        var colLength = BoardManager.Instance.BoardSize.y;
-        var tilemap = BoardManager.Instance.BoardTilemap;
-        
-        int x = tileConnected.BoardPosition.x;
-        for (int y = 0; y < colLength - 1; y++)
-        {
-            GameTile lowerTile = board[x, y];
-            if(lowerTile != null) continue;
-            GameTile tileToPush = board[x, y+1];
-            if(tileToPush == null || !tileToPush.IsMovable) continue;
-
-            tileToPush.MoveTo(tilemap.GetCellCenterWorld(new Vector3Int(x, y)));
-            tileToPush.BoardPosition = new Vector3Int(x, y);
-            board[x, y] = tileToPush;
-            board[x, y+1] = null;
-        }
-    }
-
-    private static void ApplyGravityLeft(GameTile tileConnected)
-    {
-        var board = BoardManager.Instance.board;
         var rowLength = BoardManager.Instance.BoardSize.x;
-        var tilemap = BoardManager.Instance.BoardTilemap;
 
-        int y = tileConnected.BoardPosition.y;
-        for (int x = 0; x < rowLength - 1; x++)
+        if (position.x < -1 || position.x > rowLength
+        || position.y < -1 || position.y > colLength) //out of bounds cases
         {
-            GameTile leftTile = board[x, y];
-            if(leftTile != null) continue;
-            GameTile tileToPush = board[x+1, y];
-            if(tileToPush == null || !tileToPush.IsMovable) continue;
-
-            tileToPush.MoveTo(tilemap.GetCellCenterWorld(new Vector3Int(x, y)));
-            tileToPush.BoardPosition = new Vector3Int(x, y);
-            board[x, y] = tileToPush;
-            board[x+1, y] = null;
+            return true;
         }
-    }   
 
-    private static void ApplyGravityRight(GameTile tileConnected)
-    {
-        var board = BoardManager.Instance.board;
-        var rowLength = BoardManager.Instance.BoardSize.x;
-        var tilemap = BoardManager.Instance.BoardTilemap;
-
-        int y = tileConnected.BoardPosition.y;
-        for (int x = rowLength - 1; x > 0; x--)
+        if (position.x == -1 || position.x == rowLength
+        || position.y == -1 || position.y == colLength) //allow outside 1 for edge searches
         {
-            GameTile rightTile = board[x, y];
-            if(rightTile != null) continue;
-            GameTile tileToPush = board[x-1, y];
-            if(tileToPush == null || !tileToPush.IsMovable) continue;
-
-            tileToPush.MoveTo(tilemap.GetCellCenterWorld(new Vector3Int(x, y)));
-            tileToPush.BoardPosition = new Vector3Int(x, y);
-            board[x, y] = tileToPush;
-            board[x-1, y] = null;
+            return false;
         }
+
+        var tile = board[position.x, position.y];
+        return tile != null && tile.IsBlockable;
     }
 #endregion
 

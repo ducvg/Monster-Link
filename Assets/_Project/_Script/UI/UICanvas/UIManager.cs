@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Utility.SkibidiTween;
 
-public class UIManager : PersistentSingleton<UIManager>
+public class UIManager : Singleton<UIManager>
 {
     [SerializeField] private Transform canvasRoot;
     [SerializeField] private List<BaseCanvas> prefabList;
@@ -10,9 +11,9 @@ public class UIManager : PersistentSingleton<UIManager>
     private Dictionary<Type, BaseCanvas> activeCanvases = new(); 
     private Dictionary<Type, BaseCanvas> canvasPrefabs = new(); 
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
+        DontDestroyOnLoad(gameObject);
 
         foreach (var canvas in prefabList)
         {

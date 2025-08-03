@@ -1,16 +1,30 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameplayWinCanvas : BaseCanvas
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [Header("Gameplay Win Canvas Settings")]
+    [SerializeField] private Button claimButton;
+    [SerializeField] private PlayerDataProfileSO playerDataProfile;
+
+    public override void Setup()
     {
-        
+        base.Setup();
+        SoundManager.Instance.PlayFx(FxID.Game_Win);
+        claimButton.interactable = false;
+
+        playerDataProfile.Save();
+        SaveSystem.Save();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Claim()
     {
-        
+        SoundManager.Instance.PlayFx(FxID.Button);
+        GameManager.Instance.LoadSceneQuick(GameScene.Home, () =>
+        {
+            UIManager.Instance.Open<HomeCanvas>();
+            SoundManager.Instance.ChangeSound(SoundID.Home_BG, 1f);
+        });
     }
 }

@@ -769,7 +769,7 @@ MonoBehaviour:
     _serializedList: []
   sceneHideAnimations:
     _serializedList: []
-  preview: 1
+  preview: 0
   useDefaultDatabase: 1
   useDefaultKeywordDatabase: 0
   initDatabase: 1
@@ -1851,7 +1851,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8850319126056138337}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 115360027574279060}
+        m_TargetAssemblyTypeName: GameplayWinCanvas, Assembly-CSharp
+        m_MethodName: Claim
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7505125335714341921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1996,7 +2008,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &7166086662804402462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2056,6 +2068,8 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   canvasGroup: {fileID: 175598346490474321}
+  claimButton: {fileID: 7751340674945386867}
+  playerDataProfile: {fileID: 11400000, guid: 9403985343d8f16498e28be3646ee7d7, type: 2}
 --- !u!1 &8950359411864793656
 GameObject:
   m_ObjectHideFlags: 0

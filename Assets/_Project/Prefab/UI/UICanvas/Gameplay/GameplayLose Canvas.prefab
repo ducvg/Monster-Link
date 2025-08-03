@@ -871,6 +871,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   canvasGroup: {fileID: 4076255547142745823}
+  playerDataProfile: {fileID: 11400000, guid: 9403985343d8f16498e28be3646ee7d7, type: 2}
 --- !u!225 &4076255547142745823
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -928,7 +929,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &8948963738012517310
 MonoBehaviour:
   m_ObjectHideFlags: 0

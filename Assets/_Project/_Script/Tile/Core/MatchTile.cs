@@ -18,7 +18,7 @@ public class MatchTile : GameTile, IPointerClickHandler
 
     [SerializeField] protected bool isInteractable = true;
 
-    
+    public bool IsConnected { get; set; } = false;
     public Action lineDespawnAction;
     private int currentAnim;
 
@@ -51,18 +51,6 @@ public class MatchTile : GameTile, IPointerClickHandler
         }
     }
 
-    public override void OnDespawn()
-    {
-        base.OnDespawn();
-
-        GameState.OnGamePause -= DisableInteraction;
-        GameState.OnGameResume -= EnableInteraction;
-
-        if(tileEffect != null) tileEffect.OnDespawn(this);
-    
-        Destroy(gameObject, 1.2f);
-    }
-
     public virtual void OnPointerClick(PointerEventData eventData)
     {
         if (!isInteractable) return;
@@ -84,18 +72,34 @@ public class MatchTile : GameTile, IPointerClickHandler
 
     public virtual void OnConnect()
     {
-        lineDespawnAction?.Invoke();
         isInteractable = false;
         transform.position = transform.position.WithZ(-1f); //show above otherr
         ApplyEffect();
-        BoardManager.Instance.board[BoardPosition.x, BoardPosition.y] = null;
 
+        BoardManager.Instance.board[BoardPosition.x, BoardPosition.y] = null;
+        GameBoard.ApplyGravityAt(this, BoardManager.Instance.GravityDirection);
+
+        lineDespawnAction?.Invoke();
         ChangeAnim(AnimationHash.OnConnect);
         OnDespawn();
     }
 
+    public override void OnDespawn()
+    {
+        base.OnDespawn();
+
+        GameState.OnGamePause -= DisableInteraction;
+        GameState.OnGameResume -= EnableInteraction;
+
+        if(tileEffect != null) tileEffect.OnDespawn(this);
+    
+        Destroy(gameObject, 1.2f);
+    }
+
     public override void MoveTo(Vector3 destination, float speed = 5f, Action onComplete = null, Action onUpdate = null)
     {
+        if(IsConnected) return;
+
         GamePowerState.isAllow = false;  //disable powers when board is moving
         StopAllCoroutines();
         isInteractable = false;

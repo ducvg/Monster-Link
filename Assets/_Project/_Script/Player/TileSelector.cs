@@ -1,6 +1,6 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Utility.SkibidiTween;
 
 public class TileSelector : Singleton<TileSelector>
 {
@@ -11,7 +11,9 @@ public class TileSelector : Singleton<TileSelector>
 
     public void SelectTile(MatchTile tile)
     {
+        SoundManager.Instance.PlayFx(FxID.Tile_Select);
         HighlightTileOn(tile);
+
         if (selectedTile1 == null) // select 1st tile
         {
             selectedTile1 = tile;
@@ -65,21 +67,31 @@ public class TileSelector : Singleton<TileSelector>
 
     private void OnTilesConnected()
     {
+        SoundManager.Instance.PlayFx(FxID.Tile_Connect);
         selectHighlighter.SetActive(false);
+        
+        selectedTile1.IsConnected = true;
+        selectedTile2.IsConnected = true;
         selectedTile1.OnConnect();
         selectedTile2.OnConnect();
 
         BoardManager.Instance.MatchTileCount -= 2;
         if(BoardManager.Instance.MatchTileCount <= 0)
         {
-            GameState.OnGamePause?.Invoke();
             GameState.OnGameWon?.Invoke();
-            UIManager.Instance.Open<GameplayWinCanvas>();
+            StartCoroutine(SkibidiTween.SkibidiDelay(1f, () =>
+            {
+                UIManager.Instance.Open<GameplayWinCanvas>();
+                
+            }));
             return;
         }
 
-        GameBoard.ApplyGravity(selectedTile1, BoardManager.Instance.GravityDirection);
-        GameBoard.ApplyGravity(selectedTile2, BoardManager.Instance.GravityDirection);
+        if(GameBoard.FindAnyPath() == null)
+        {
+            Debug.Log("No path found, shuffling");
+            GameBoard.Shuffle();
+        }
     }
 
     public void Reset()

@@ -1,21 +1,28 @@
 using System;
 using UnityEngine;
 
-public class GameManager : PersistentSingleton<GameManager>
+public class GameManager : Singleton<GameManager>
 {
-    public PlayerDataProfileSO PlayerDataProfile { get => playerDataProfile; }
     [SerializeField] private PlayerDataProfileSO playerDataProfile;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+        
+        SaveSystem.Load();
+        playerDataProfile.Load();
+    }
 
     void Start()
     {
         LoadScene(GameScene.Home,
         onComplete:() =>
         {
+            UIManager.Instance.Open<HomeCanvas>();
             LevelManager.Instance.OnInit();
+            SoundManager.Instance.ChangeSound(SoundID.Home_BG, 1f);
         }
-        );
-        SaveSystem.Load();
-        playerDataProfile.Load();
+        );   
     }
 
     public void LoadScene(GameScene loadScene, Action onComplete = null)
@@ -36,10 +43,6 @@ public class GameManager : PersistentSingleton<GameManager>
         ));
     }
 
-    void OnApplicationQuit()
-    {
-        SaveSystem.Save();
-    }
 }
 
 public enum GameScene

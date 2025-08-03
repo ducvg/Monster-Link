@@ -16,6 +16,8 @@ public class PowerPanelUI : MonoBehaviour
 
     public void Toggle()
     {
+        SoundManager.Instance.PlayFx(FxID.Button);
+        
         if(gameObject.activeSelf) Hide();
         else Show();
     }
@@ -24,8 +26,8 @@ public class PowerPanelUI : MonoBehaviour
     {
         if (isSkibiding) return;
         gameObject.SetActive(true);
-        
         isSkibiding = true;
+
         StartCoroutine(rectTransform.SkibidiMove(
             moveSettings, 
             () =>
@@ -40,6 +42,7 @@ public class PowerPanelUI : MonoBehaviour
     {
         if (isSkibiding) return;
         isSkibiding = true;
+
         StartCoroutine(rectTransform.SkibidiMove(
             moveSettings, 
             () =>

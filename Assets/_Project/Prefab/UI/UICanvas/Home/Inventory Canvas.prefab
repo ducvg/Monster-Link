@@ -468,7 +468,29 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  alphaSettings:
+  rotationSettings:
+    isUse: 0
+    start: {x: 0, y: 0, z: 0}
+    end: {x: 0, y: 0, z: 0}
+    duration: 0
+    easeCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  scaleSettings:
+    isUse: 0
+    start: {x: 0, y: 0, z: 0}
+    end: {x: 0, y: 0, z: 0}
+    duration: 0
+    easeCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  colorSettings:
     isUse: 0
     start: {r: 0, g: 0, b: 0, a: 0}
     end: {r: 0, g: 0, b: 0, a: 0}
@@ -479,7 +501,37 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  fadeGraphic: {fileID: 0}
+  elementGraphic: {fileID: 0}
+  onShow:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5677619127998265615}
+        m_TargetAssemblyTypeName: SkibidiElement, Assembly-CSharp
+        m_MethodName: Move
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onHide:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5677619127998265615}
+        m_TargetAssemblyTypeName: SkibidiElement, Assembly-CSharp
+        m_MethodName: Move
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4526986828517697973
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,18 +586,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeSettings:
-    isUse: 0
-    start: 0
-    end: 0
-    duration: 0
+    isUse: 1
+    start: 1
+    end: 1
+    duration: 1
     easeCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 1.0008272
+        outSlope: 1.0008272
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0
+        outWeight: 1
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0.997151
+        outSlope: 0.997151
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 1
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
   canvasGroup: {fileID: 6827639614836275724}
-  IsHandlingRabbitEars: 0
 --- !u!223 &4044972415504009114
 Canvas:
   m_ObjectHideFlags: 0
@@ -876,7 +945,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 24.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

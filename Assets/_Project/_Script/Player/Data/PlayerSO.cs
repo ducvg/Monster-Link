@@ -9,19 +9,19 @@ public class PlayerDataProfileSO : ScriptableObject
 
     public void LoadPowerData()
     {
-        PowerData = SaveSystem.gameData.powerData.CloneInstance();
+        PowerData = SaveSystem.userData.powerData.CloneInstance();
     }
 
     public void Save()
     {
-        SaveSystem.gameData.playerData = PlayerData.CloneInstance();
-        SaveSystem.gameData.powerData = PowerData.CloneInstance();
+        SaveSystem.userData.playerData = PlayerData.CloneInstance();
+        SaveSystem.userData.powerData = PowerData.CloneInstance();
     }
 
     public void Load()
     {
-        PlayerData = SaveSystem.gameData.playerData.CloneInstance();
-        PowerData = SaveSystem.gameData.powerData.CloneInstance();
+        PlayerData = SaveSystem.userData.playerData.CloneInstance();
+        PowerData = SaveSystem.userData.powerData.CloneInstance();
     }
 }
 
