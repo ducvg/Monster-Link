@@ -42,14 +42,6 @@ public class LevelManager : Singleton<LevelManager>
         }
     }
 
-    public void AddLevelRange(int startLevel, int endLevel)
-    {
-        for (int i = startLevel; i <= endLevel; i++)
-        {
-            TryAddLevel(i);
-        }
-    }
-
     private void OnEnable()
     {
         GameState.OnGameWon += OnLevelComplete;

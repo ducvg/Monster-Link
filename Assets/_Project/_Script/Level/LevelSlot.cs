@@ -28,6 +28,7 @@ public class LevelSlot : MonoBehaviour
         SoundManager.Instance.PlayFx(FxID.Level_Select);
         GameManager.Instance.LoadSceneQuick(GameScene.Gameplay, () =>
         {
+            UIManager.Instance.CloseAll();
             LevelManager.Instance.SpawnLevel(LevelIndex);
             SoundManager.Instance.ChangeSound(SoundID.Gameplay_BG, 1);
         });

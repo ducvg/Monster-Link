@@ -74,41 +74,6 @@ public static class GameBoard
             ApplyGravityAll(BoardManager.Instance.GravityDirection, isSkipAnimation: true);
         } while (FindAnyPath() == null && escape++ < 100);
     }
-
-    private static void SwapTiles(GameTile tile1, GameTile tile2)
-    {
-        var board = BoardManager.Instance.board;
-
-        (board[tile1.BoardPosition.x, tile1.BoardPosition.y], board[tile2.BoardPosition.x, tile2.BoardPosition.y]) = (tile2, tile1);
-        (tile2.transform.position, tile1.transform.position) = (tile1.transform.position, tile2.transform.position);
-        (tile2.BoardPosition, tile1.BoardPosition) = (tile1.BoardPosition, tile2.BoardPosition);
-    }
-
-    private static void SwapBoardPositions(Vector3Int pos1, Vector3Int pos2)
-    {
-        var board = BoardManager.Instance.board;
-        var tilemap = BoardManager.Instance.BoardTilemap;
-
-        var tile1 = board[pos1.x, pos1.y];
-        var tile2 = board[pos2.x, pos2.y];
-
-        // Swap in board array
-        board[pos1.x, pos1.y] = tile2;
-        board[pos2.x, pos2.y] = tile1;
-
-        // Update board positions
-        if (tile1 != null)
-        {
-            tile1.BoardPosition = pos2;
-            tile1.transform.position = tilemap.GetCellCenterWorld(pos2);
-        }
-
-        if (tile2 != null)
-        {
-            tile2.BoardPosition = pos1;
-            tile2.transform.position = tilemap.GetCellCenterWorld(pos1);
-        }
-    }
 #endregion
 
 #region Connect 2 tiles
@@ -392,6 +357,42 @@ public static class GameBoard
 #endregion
 
 #region Helpers
+
+    private static void SwapTiles(GameTile tile1, GameTile tile2)
+    {
+        var board = BoardManager.Instance.board;
+
+        (board[tile1.BoardPosition.x, tile1.BoardPosition.y], board[tile2.BoardPosition.x, tile2.BoardPosition.y]) = (tile2, tile1);
+        (tile2.transform.position, tile1.transform.position) = (tile1.transform.position, tile2.transform.position);
+        (tile2.BoardPosition, tile1.BoardPosition) = (tile1.BoardPosition, tile2.BoardPosition);
+    }
+
+    private static void SwapBoardPositions(Vector3Int pos1, Vector3Int pos2)
+    {
+        var board = BoardManager.Instance.board;
+        var tilemap = BoardManager.Instance.BoardTilemap;
+
+        var tile1 = board[pos1.x, pos1.y];
+        var tile2 = board[pos2.x, pos2.y];
+
+        // Swap in board array
+        board[pos1.x, pos1.y] = tile2;
+        board[pos2.x, pos2.y] = tile1;
+
+        // Update board positions
+        if (tile1 != null)
+        {
+            tile1.BoardPosition = pos2;
+            tile1.transform.position = tilemap.GetCellCenterWorld(pos2);
+        }
+
+        if (tile2 != null)
+        {
+            tile2.BoardPosition = pos1;
+            tile2.transform.position = tilemap.GetCellCenterWorld(pos1);
+        }
+    }
+
     public static List<(int x, int y)> GetEmptyPositions()
     {
         var board = BoardManager.Instance.board;

@@ -16,12 +16,14 @@ public class HomeSettingCanvas : BaseCanvas
         base.Setup();
         SetBackgroundVolume(SaveSystem.userData.settingConfig.BackgroundVolume);
         SetFxVolume(SaveSystem.userData.settingConfig.FxVolume);
+        backgroundVolumeSlider.value = SaveSystem.userData.settingConfig.BackgroundVolume;
+        fxVolumeSlider.value = SaveSystem.userData.settingConfig.FxVolume;
     }
 
-    public override void Close()
+    public void CloseSetting()
     {
         SoundManager.Instance.PlayFx(FxID.Button);
-        base.Close();
+        UIManager.Instance.Close<HomeSettingCanvas>();
     }
 
     public void Quit()
@@ -61,8 +63,10 @@ public class HomeSettingCanvas : BaseCanvas
         if(Mathf.Approximately(SaveSystem.userData.settingConfig.BackgroundVolume, 0))
         {
             SetBackgroundVolume(1);
+            backgroundVolumeSlider.value = 1;
         } else {
             SetBackgroundVolume(0);
+            backgroundVolumeSlider.value = 0;
         }
     }
 
@@ -71,9 +75,11 @@ public class HomeSettingCanvas : BaseCanvas
         SoundManager.Instance.PlayFx(FxID.Button);
         if(Mathf.Approximately(SaveSystem.userData.settingConfig.FxVolume, 0))
         {
-            SetFxVolume(1);
+            SetFxVolume(1); 
+            fxVolumeSlider.value = 1;
         } else {
             SetFxVolume(0);
+            fxVolumeSlider.value = 0;
         }
     }
 }

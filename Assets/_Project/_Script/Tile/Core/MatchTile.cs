@@ -17,8 +17,8 @@ public class MatchTile : GameTile, IPointerClickHandler
     [SerializeField] private TileEffect tileEffect;
 
     [SerializeField] protected bool isInteractable = true;
+    protected bool isConnected = false;
 
-    public bool IsConnected { get; set; } = false;
     public Action lineDespawnAction;
     private int currentAnim;
 
@@ -73,11 +73,11 @@ public class MatchTile : GameTile, IPointerClickHandler
     public virtual void OnConnect()
     {
         isInteractable = false;
+        isConnected = true;
         transform.position = transform.position.WithZ(-1f); //show above otherr
         ApplyEffect();
 
         BoardManager.Instance.board[BoardPosition.x, BoardPosition.y] = null;
-        GameBoard.ApplyGravityAt(this, BoardManager.Instance.GravityDirection);
 
         lineDespawnAction?.Invoke();
         ChangeAnim(AnimationHash.OnConnect);
@@ -98,10 +98,9 @@ public class MatchTile : GameTile, IPointerClickHandler
 
     public override void MoveTo(Vector3 destination, float speed = 5f, Action onComplete = null, Action onUpdate = null)
     {
-        if(IsConnected) return;
+        if(isConnected) return;
 
         GamePowerState.isAllow = false;  //disable powers when board is moving
-        StopAllCoroutines();
         isInteractable = false;
         base.MoveTo(destination, speed, onComplete, () => GamePowerState.isAllow = false);
     }

@@ -70,10 +70,10 @@ public class TileSelector : Singleton<TileSelector>
         SoundManager.Instance.PlayFx(FxID.Tile_Connect);
         selectHighlighter.SetActive(false);
         
-        selectedTile1.IsConnected = true;
-        selectedTile2.IsConnected = true;
         selectedTile1.OnConnect();
         selectedTile2.OnConnect();
+
+        BoardManager.Instance.TryApplyGravityAt(selectedTile1, selectedTile2);
 
         BoardManager.Instance.MatchTileCount -= 2;
         if(BoardManager.Instance.MatchTileCount <= 0)

@@ -29,6 +29,7 @@ public class GameTile : MonoBehaviour
 
     public virtual void MoveTo(Vector3 destination, float speed = 4f, Action onComplete = null, Action onUpdate = null)
     {
+        StopAllCoroutines();
         onComplete += OnMoveComplete;
         StartCoroutine(transform.SkibidiMoveAtSpeed(destination, speed, onComplete, onUpdate));
     }

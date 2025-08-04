@@ -5,14 +5,12 @@ using UnityEngine.UI;
 public class GameplayWinCanvas : BaseCanvas
 {
     [Header("Gameplay Win Canvas Settings")]
-    [SerializeField] private Button claimButton;
     [SerializeField] private PlayerDataProfileSO playerDataProfile;
 
     public override void Setup()
     {
         base.Setup();
         SoundManager.Instance.PlayFx(FxID.Game_Win);
-        claimButton.interactable = false;
 
         playerDataProfile.Save();
         SaveSystem.Save();

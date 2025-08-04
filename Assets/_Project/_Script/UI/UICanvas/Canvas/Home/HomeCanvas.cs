@@ -5,7 +5,7 @@ public class HomeCanvas : BaseCanvas
     public void OpenSetting()
     {
         SoundManager.Instance.PlayFx(FxID.Button);
-        UIManager.Instance.Open<GameplaySettingCanvas>();
+        UIManager.Instance.Open<HomeSettingCanvas>();
     }   
 
     public void ToggleInventory()

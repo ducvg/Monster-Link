@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
@@ -8,7 +9,6 @@ public class BoardManager : Singleton<BoardManager>
     [field: SerializeField] public Vector2Int BoardSize { get; private set; } = new Vector2Int(15, 6);
     [field: SerializeField] public Tilemap BoardTilemap { get; private set; }
     [field: SerializeField] public float LevelTime { get; private set; } = 300f;
-
     public GravityDirection GravityDirection 
     {
         get => gravityDirection;
@@ -26,7 +26,7 @@ public class BoardManager : Singleton<BoardManager>
     public GameTile[,] board;
     public int MatchTileCount { get; set; }
 
-    #region Debug
+#region Debug
     [Header("Debug")]
     [SerializeField, InspectorName("Show board border")] private bool isDebugBorder = true;
     [SerializeField, InspectorName("Show board position")] private bool isDebugPosition = true;
@@ -52,7 +52,6 @@ public class BoardManager : Singleton<BoardManager>
 
     public void AutoSolve()
     {
-        
         var path = GameBoard.FindAnyPath();
         if (path != null)
         {
@@ -64,6 +63,25 @@ public class BoardManager : Singleton<BoardManager>
     {
         TileSelector.Instance.Reset();
         GameBoard.Shuffle();
+    }
+
+    public void TryApplyGravityAt(MatchTile tile1, MatchTile tile2)
+    {
+        switch (GravityDirection)
+        {
+            case GravityDirection.Up:
+            case GravityDirection.Down:
+                GameBoard.ApplyGravityAt(tile1, GravityDirection);
+                if (tile1.BoardPosition.x != tile2.BoardPosition.x)
+                    GameBoard.ApplyGravityAt(tile2, GravityDirection);
+                break;
+            case GravityDirection.Left:
+            case GravityDirection.Right:
+                GameBoard.ApplyGravityAt(tile1, GravityDirection);
+                if (tile1.BoardPosition.y != tile2.BoardPosition.y)
+                    GameBoard.ApplyGravityAt(tile2, GravityDirection);
+                break;
+        }
     }
 
     public void ClearBoard()
@@ -86,6 +104,7 @@ public class BoardManager : Singleton<BoardManager>
 
     private void HideBoard()
     {
+        TileSelector.Instance.Reset();
         var gridTransform = BoardTilemap.transform.parent;
         StartCoroutine(gridTransform.SkibidiMove
         (
@@ -114,7 +133,7 @@ public class BoardManager : Singleton<BoardManager>
         GameState.OnGameResume -= ShowBoard;
     }
 
-    #region Debugging
+#region Debugging
     private void OnDrawGizmos()
     {
         if(isDebugBorder)
@@ -165,7 +184,10 @@ public class BoardManager : Singleton<BoardManager>
     {
         BoardTilemap.transform.parent.position = boardMoveSetting.end;
     }
+
+    
     #endregion
+
 }
 
 public enum GravityDirection

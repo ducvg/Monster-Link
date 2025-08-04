@@ -443,7 +443,7 @@ MonoBehaviour:
     isUse: 1
     start: {x: 0, y: 0}
     end: {x: -1450, y: 0}
-    duration: 1
+    duration: 0.5
     easeCurve:
       serializedVersion: 2
       m_Curve:
@@ -589,7 +589,7 @@ MonoBehaviour:
     isUse: 1
     start: 1
     end: 1
-    duration: 1
+    duration: 0.5
     easeCurve:
       serializedVersion: 2
       m_Curve:

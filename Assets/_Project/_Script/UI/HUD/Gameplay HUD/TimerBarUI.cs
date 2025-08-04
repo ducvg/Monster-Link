@@ -25,11 +25,13 @@ public class TimerBarUI : MonoBehaviour
     public void OnInit()
     {        
         maxTimeSeconds = BoardManager.Instance.LevelTime;
-        warnTimeAction = WarnTime;
+    
         timer = maxTimeSeconds;
-        isTimerRunning = true;
         warnTime = maxTimeSeconds * 0.25f;
+        isTimerRunning = true;
+
         UpdateUI();
+        warnTimeAction = WarnTime;
     }
 
     void Update()

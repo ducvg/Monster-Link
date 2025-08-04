@@ -43,6 +43,10 @@ public class GameManager : Singleton<GameManager>
         ));
     }
 
+    void OnApplicationQuit()
+    {
+        SaveSystem.Save();
+    }
 }
 
 public enum GameScene

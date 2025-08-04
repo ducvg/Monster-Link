@@ -595,9 +595,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameplaySettingCanvas, Assembly-CSharp
-        m_MethodName: OnResumeClick
+      - m_Target: {fileID: 7329123811618274021}
+        m_TargetAssemblyTypeName: HomeSettingCanvas, Assembly-CSharp
+        m_MethodName: CloseSetting
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -927,7 +927,7 @@ MonoBehaviour:
     isUse: 1
     start: {r: 0, g: 0, b: 0, a: 0.6627451}
     end: {r: 0, g: 0, b: 0, a: 0}
-    duration: 1.5
+    duration: 1
     easeCurve:
       serializedVersion: 2
       m_Curve:
@@ -1269,20 +1269,20 @@ MonoBehaviour:
       - serializedVersion: 3
         time: 0
         value: 0
-        inSlope: 2
-        outSlope: 2
+        inSlope: 1.0008272
+        outSlope: 1.0008272
         tangentMode: 0
-        weightedMode: 0
+        weightedMode: 3
         inWeight: 0
-        outWeight: 0
+        outWeight: 1
       - serializedVersion: 3
         time: 1
         value: 1
-        inSlope: 0
-        outSlope: 0
+        inSlope: 0.997151
+        outSlope: 0.997151
         tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
+        weightedMode: 3
+        inWeight: 1
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -1292,8 +1292,8 @@ MonoBehaviour:
   fxVolumeSlider: {fileID: 6520633209759666508}
   backgroundButton: {fileID: 6481850238354861623}
   fxButton: {fileID: 8125645787789781432}
-  muteSprite: {fileID: 21300000, guid: 9838b007e87efd04e982f7ae2b4d4f96, type: 3}
-  unmuteSprite: {fileID: 21300000, guid: fdc3acdde454db444acd6146ebe570b8, type: 3}
+  muteSprite: {fileID: 21300000, guid: fdc3acdde454db444acd6146ebe570b8, type: 3}
+  unmuteSprite: {fileID: 21300000, guid: 9838b007e87efd04e982f7ae2b4d4f96, type: 3}
   playerDataProfile: {fileID: 11400000, guid: 9403985343d8f16498e28be3646ee7d7, type: 2}
 --- !u!225 &3043037131914238335
 CanvasGroup:
@@ -1328,7 +1328,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &2362272162768033475
 MonoBehaviour:
@@ -1352,7 +1352,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &2905981871044520053
 MonoBehaviour:
   m_ObjectHideFlags: 0
