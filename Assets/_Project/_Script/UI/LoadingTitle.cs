@@ -12,7 +12,7 @@ public class LoadingTitle : MonoBehaviour
     void Start()
     {
         StartCoroutine((transform as RectTransform).SkibidiMove(moveSetting, null, isReverse: true));
-        StartCoroutine(titleText.SkibidiFade(colorSetting, null, isReverse: true));
+        StartCoroutine(titleText.SkibidiColor(colorSetting, null, isReverse: true));
     }
 
 }

@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class TimerBarUI : MonoBehaviour
 {
+    [SerializeField, InspectorName("Remain time")] private float timer = 10f;
+    [SerializeField] private Gradient timerGradient;
     [SerializeField] private Image timerFill;
     [SerializeField] private TextMeshProUGUI timerText;
-    [SerializeField, InspectorName("Remain time")] private float timer = 10f;
-    [SerializeField] private Color warnColor = Color.red;
-    [SerializeField] private float colorChangeTime = 2f;
+
 
     private float maxTimeSeconds;
     private bool isTimerRunning = true;
@@ -39,6 +39,7 @@ public class TimerBarUI : MonoBehaviour
         if (!isTimerRunning) return;
         
         timer -= Time.deltaTime;
+        timerFill.color = timerGradient.Evaluate(timer / maxTimeSeconds);
         
         if (timer <= 0)
         {
@@ -57,20 +58,7 @@ public class TimerBarUI : MonoBehaviour
         if(timer > warnTime) return;
 
         SoundManager.Instance.PlayFx(FxID.Time_Warning);
-        StartCoroutine(TimerColorCoroutine());
         warnTimeAction = null;
-    }
-
-    private IEnumerator TimerColorCoroutine()
-    {
-        float elapsed = 0f;
-        while (elapsed < colorChangeTime)
-        {
-            timerFill.color = Color.Lerp(timerFill.color, warnColor, elapsed / colorChangeTime);
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-        timerFill.color = warnColor;
     }
 
     private void UpdateUI()

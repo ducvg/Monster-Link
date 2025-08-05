@@ -10,8 +10,10 @@ public class SkibidiElement : MonoBehaviour
     [SerializeField] private Skibidi<Vector3> rotationSettings;
     [SerializeField] private Skibidi<Vector3> scaleSettings;
     [SerializeField] private Skibidi<Color> colorSettings;
+    [SerializeField] private Skibidi<float> alphaSettings;
 
     [SerializeField] private Graphic elementGraphic;
+    [SerializeField] private CanvasGroup elementCanvasGroup;
 
     [SerializeField] private UnityEvent onShow, onHide;
 
@@ -32,7 +34,8 @@ public class SkibidiElement : MonoBehaviour
     public void Move(bool isReverse) => StartCoroutine(rectTransform.SkibidiMove(moveSettings, null, isReverse));
     public void Rotate(bool isReverse) => StartCoroutine(rectTransform.SkibidiRotate(rotationSettings, null, isReverse));
     public void Scale(bool isReverse) => StartCoroutine(rectTransform.SkibidiScale(scaleSettings, null, isReverse));
-    public void Fade(bool isReverse) => StartCoroutine(elementGraphic.SkibidiFade(colorSettings, null, isReverse));
+    public void Fade(bool isReverse) => StartCoroutine(elementGraphic.SkibidiColor(colorSettings, null, isReverse));
+    public void FadeGroup(bool isReverse) => StartCoroutine(elementCanvasGroup.SkibidiFade(alphaSettings, null, isReverse));
 
     public void RotateLoop(bool isPingPong) => StartCoroutine(rectTransform.SkibidiRotateLoop(rotationSettings, isPingPong));
     public void ScaleLoop(bool isPingPong) => StartCoroutine(rectTransform.SkibidiScaleLoop(scaleSettings, isPingPong));

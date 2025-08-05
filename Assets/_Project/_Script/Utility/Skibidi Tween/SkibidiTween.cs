@@ -109,7 +109,7 @@ namespace Utility.SkibidiTween
             onComplete?.Invoke();
         }
 
-        public static IEnumerator SkibidiFade(this Graphic target, Skibidi<Color> tween, Action onComplete = null, bool isReverse = false)
+        public static IEnumerator SkibidiColor(this Graphic target, Skibidi<Color> tween, Action onComplete = null, bool isReverse = false)
         {
             if(!tween.isUse) 
             {
