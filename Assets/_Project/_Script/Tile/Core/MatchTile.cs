@@ -21,11 +21,13 @@ public class MatchTile : GameTile, IPointerClickHandler
 
     public Action lineDespawnAction;
     private int currentAnim;
+    private new Collider2D collider;
 
     protected override void Awake()
     {
+        
         base.Awake();
-
+        collider = GetComponent<Collider2D>();
     }
 
     public override void OnInit()
@@ -88,6 +90,7 @@ public class MatchTile : GameTile, IPointerClickHandler
     {
         base.OnDespawn();
 
+        collider.enabled = false;
         GameState.OnGamePause -= DisableInteraction;
         GameState.OnGameResume -= EnableInteraction;
 

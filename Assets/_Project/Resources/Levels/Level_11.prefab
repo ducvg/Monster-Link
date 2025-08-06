@@ -2870,7 +2870,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3750810210454013935, guid: 34356ffd414495e42bfbe1aa97ae3f58, type: 3}
       propertyPath: <LevelTime>k__BackingField
-      value: 300
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 4683246467042762784, guid: 34356ffd414495e42bfbe1aa97ae3f58, type: 3}
       propertyPath: m_Tiles.Array.size

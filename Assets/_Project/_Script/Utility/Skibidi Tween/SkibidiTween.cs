@@ -82,6 +82,12 @@ namespace Utility.SkibidiTween
             onComplete?.Invoke();
         }
 
+        public static IEnumerator OnComplete(this IEnumerator coroutine, Action onComplete)
+        {
+            yield return coroutine;
+            onComplete?.Invoke();
+        }
+
         public static IEnumerator SkibidiFade(this CanvasGroup target, Skibidi<float> tween, Action onComplete = null, bool isReverse = false)
         {
             if(!tween.isUse) 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Utility.SkibidiTween;
@@ -9,16 +10,12 @@ public class BaseCanvas : MonoBehaviour
     [Header("Base Canvas Settings")]
     [SerializeField] protected Skibidi<float> fadeSettings;
     [SerializeField] protected CanvasGroup canvasGroup;
-    // [SerializeField] private bool IsHandlingRabbitEars = false;
-
     protected SkibidiElement[] elementSettings;
     protected bool isTweening = false; //track if canvas is fully open or closed
-
 
     protected virtual void Awake()
     {
         elementSettings = GetComponentsInChildren<SkibidiElement>(includeInactive: true);
-        
     }
 
     public virtual void Setup()

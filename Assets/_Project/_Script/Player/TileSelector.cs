@@ -31,7 +31,7 @@ public class TileSelector : Singleton<TileSelector>
             List<(int x, int y)> path = GameBoard.Connect(selectedTile1, selectedTile2);
             if (path != null)
             {
-                lineDrawer.DrawLine(path, 0.7f);
+                lineDrawer.DrawLine(path, 1.4f);
 
                 OnTilesConnected();
             }
