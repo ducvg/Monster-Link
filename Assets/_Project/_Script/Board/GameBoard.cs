@@ -40,6 +40,20 @@ public static class GameBoard
         {
             ShuffleRandomPosition();
         }
+
+        RepositionMatchTiles(matchTiles);
+    }
+
+    private static void RepositionMatchTiles(List<MatchTile> matchTiles)
+    {
+        var board = BoardManager.Instance.board;
+        var colLength = BoardManager.Instance.BoardSize.y;
+        var rowLength = BoardManager.Instance.BoardSize.x;
+
+        foreach (var tile in matchTiles)
+        {
+            tile.transform.position = BoardManager.Instance.BoardTilemap.GetCellCenterWorld(tile.BoardPosition);
+        }
     }
 
     public static void ShuffleRandomPosition()
@@ -361,6 +375,8 @@ public static class GameBoard
     private static void SwapTiles(GameTile tile1, GameTile tile2)
     {
         var board = BoardManager.Instance.board;
+        // tile1.StopAllCoroutines();
+        // tile2.StopAllCoroutines();
 
         (board[tile1.BoardPosition.x, tile1.BoardPosition.y], board[tile2.BoardPosition.x, tile2.BoardPosition.y]) = (tile2, tile1);
         (tile2.transform.position, tile1.transform.position) = (tile1.transform.position, tile2.transform.position);
@@ -476,6 +492,27 @@ public static class GameBoard
         var tile = board[position.x, position.y];
         return tile != null && tile.IsBlockable;
     }
-#endregion
+
+    public static void ReloadPosition()
+    {
+        var board = BoardManager.Instance.board;
+        var colLength = BoardManager.Instance.BoardSize.y;
+        var rowLength = BoardManager.Instance.BoardSize.x;
+
+        for (int x = 0; x < rowLength; x++)
+        {
+            for (int y = 0; y < colLength; y++)
+            {
+                var tile = board[x, y];
+                if (tile != null)
+                {
+                    tile.StopAllCoroutines();
+                    tile.transform.position = BoardManager.Instance.BoardTilemap.GetCellCenterWorld(tile.BoardPosition);
+                    tile.OnMoveComplete();
+                }
+            }
+        }
+    }
+    #endregion
 
 }

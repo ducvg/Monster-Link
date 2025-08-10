@@ -34,7 +34,7 @@ public class GameTile : MonoBehaviour
         StartCoroutine(transform.SkibidiMoveAtSpeed(destination, speed, onComplete, onUpdate));
     }
 
-    protected virtual void OnMoveComplete()
+    public virtual void OnMoveComplete()
     {
     }
 

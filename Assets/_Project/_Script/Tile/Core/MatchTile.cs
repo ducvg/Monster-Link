@@ -108,7 +108,7 @@ public class MatchTile : GameTile, IPointerClickHandler
         base.MoveTo(destination, speed, onComplete, () => GamePowerState.isAllow = false);
     }
 
-    protected override void OnMoveComplete()
+    public override void OnMoveComplete()
     {
         base.OnMoveComplete();
         GamePowerState.isAllow = true;

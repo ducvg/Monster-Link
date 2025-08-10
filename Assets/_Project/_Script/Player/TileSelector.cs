@@ -86,11 +86,13 @@ public class TileSelector : Singleton<TileSelector>
             }));
             return;
         }
+        
 
         if(GameBoard.FindAnyPath() == null)
         {
             Debug.Log("No path found, shuffling");
             GameBoard.Shuffle();
+            GameBoard.ReloadPosition();
         }
     }
 
